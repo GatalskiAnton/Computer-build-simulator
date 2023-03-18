@@ -7,7 +7,7 @@ public class Main {
 
         Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
         Connection connection = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/pcbuilder", "root", "root");
+                "jdbc:mysql://localhost:3306/pcbuilder", "system", "system");
 
         Statement statement = connection.createStatement();
 
