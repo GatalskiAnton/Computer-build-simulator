@@ -6,7 +6,7 @@ public class Runner {
 
         Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
         Connection connection = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/pcbuilder", "system", "system");
+                "jdbc:mysql://localhost:3306/pcbuilder", "root", "root");
 
         Statement statement = connection.createStatement();
 

@@ -13,14 +13,17 @@ public class PC {
     private Motherboard motherboard;
     private PowerSupply powerSupply;
 
-    public PC(Case PCCase, Cooler cooler, CPU cpu, ROM rom, RAM ram, Motherboard motherboard, PowerSupply powerSupply) {
-        this.PCCase = PCCase;
+    private GPU gpu;
+
+    public PC(Case pcCase, Cooler cooler, CPU cpu, ROM rom, RAM ram, Motherboard motherboard, PowerSupply powerSupply, GPU gpu) {
+        PCCase = pcCase;
         this.cooler = cooler;
         this.cpu = cpu;
         this.rom = rom;
         this.ram = ram;
         this.motherboard = motherboard;
         this.powerSupply = powerSupply;
+        this.gpu = gpu;
     }
 }
 
