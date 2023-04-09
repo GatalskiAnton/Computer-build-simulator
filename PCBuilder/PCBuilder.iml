@@ -16,5 +16,18 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/JSON-java/src/main/java" />
+          <root url="file://$MODULE_DIR$/JSON-java/src/main/java" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/JSON-java/src/main/java" />
+        </SOURCES>
+        <jarDirectory url="file://$MODULE_DIR$/JSON-java/src/main/java" recursive="false" />
+      </library>
+    </orderEntry>
   </component>
 </module>

@@ -1,12 +1,26 @@
 package by.fpmibsu.PCBuilder.entity.component;
 
 public abstract class Component {
+    private int id;
     private int price;
 
-    public Component(int price, String name, String brand) {
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Component(int id, int price, String name, String brand) {
+        this.id = id;
         this.price = price;
         this.name = name;
         this.brand = brand;
+    }
+
+    public Component(){
+
     }
 
     private String name;

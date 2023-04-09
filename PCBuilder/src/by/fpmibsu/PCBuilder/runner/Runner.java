@@ -1,22 +1,14 @@
 package by.fpmibsu.PCBuilder.runner;
 import java.sql.*;
 
+import by.fpmibsu.PCBuilder.dao.utils.ComponentParser;
+import org.json.JSONObject;
 public class Runner {
     public static void main(String[] args) throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
 
-        Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-        Connection connection = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/pcbuilder", "root", "root");
+        String jsonString = "{id :1, price: 30, name: supply1, brand: brand1, TDP: 100, socket: AM4, diameter:25}";
+        ComponentParser parser = new ComponentParser();
+        System.out.println(parser.parseCooler(jsonString));
 
-        Statement statement = connection.createStatement();
-
-        ResultSet resultSet = statement.executeQuery("SELECT * FROM users");
-
-        while (resultSet.next()) {
-            int id = resultSet.getInt("id");
-            String login = resultSet.getString("login");
-            String password = resultSet.getString("password");
-            System.out.println(id + " " + login + " " + password);
-        }
     }
 }

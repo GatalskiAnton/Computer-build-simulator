@@ -2,9 +2,13 @@ package by.fpmibsu.PCBuilder.entity;
 
 import by.fpmibsu.PCBuilder.entity.component.*;
 
+import java.security.PublicKey;
+
 
 public class PC {
-    private Case PCCase;
+
+    private int id;
+    private by.fpmibsu.PCBuilder.entity.component.PCCase PCCase;
     private Cooler cooler;
     private CPU cpu;
 
@@ -15,7 +19,7 @@ public class PC {
 
     private GPU gpu;
 
-    public PC(Case pcCase, Cooler cooler, CPU cpu, ROM rom, RAM ram, Motherboard motherboard, PowerSupply powerSupply, GPU gpu) {
+    public PC(by.fpmibsu.PCBuilder.entity.component.PCCase pcCase, Cooler cooler, CPU cpu, ROM rom, RAM ram, Motherboard motherboard, PowerSupply powerSupply, GPU gpu) {
         PCCase = pcCase;
         this.cooler = cooler;
         this.cpu = cpu;
@@ -24,6 +28,82 @@ public class PC {
         this.motherboard = motherboard;
         this.powerSupply = powerSupply;
         this.gpu = gpu;
+    }
+
+    public by.fpmibsu.PCBuilder.entity.component.PCCase getPCCase() {
+        return PCCase;
+    }
+
+    public void setPCCase(by.fpmibsu.PCBuilder.entity.component.PCCase PCCase) {
+        this.PCCase = PCCase;
+    }
+
+    public Cooler getCooler() {
+        return cooler;
+    }
+
+    public void setCooler(Cooler cooler) {
+        this.cooler = cooler;
+    }
+
+    public CPU getCpu() {
+        return cpu;
+    }
+
+    public void setCpu(CPU cpu) {
+        this.cpu = cpu;
+    }
+
+    public ROM getRom() {
+        return rom;
+    }
+
+    public void setRom(ROM rom) {
+        this.rom = rom;
+    }
+
+    public RAM getRam() {
+        return ram;
+    }
+
+    public void setRam(RAM ram) {
+        this.ram = ram;
+    }
+
+    public Motherboard getMotherboard() {
+        return motherboard;
+    }
+
+    public void setMotherboard(Motherboard motherboard) {
+        this.motherboard = motherboard;
+    }
+
+    public PowerSupply getPowerSupply() {
+        return powerSupply;
+    }
+
+    public void setPowerSupply(PowerSupply powerSupply) {
+        this.powerSupply = powerSupply;
+    }
+
+    public GPU getGpu() {
+        return gpu;
+    }
+
+    public void setGpu(GPU gpu) {
+        this.gpu = gpu;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public PC(){
+
     }
 }
 
