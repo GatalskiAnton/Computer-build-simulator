@@ -21,4 +21,11 @@ public class Motherboard extends Component{
     public void setSocket(Socket socket) {
         this.socket = socket;
     }
+
+    @Override
+    public String toString() {
+        return "Motherboard{"+ super.toString() + ", " +
+                "socket=" + socket +
+                '}';
+    }
 }

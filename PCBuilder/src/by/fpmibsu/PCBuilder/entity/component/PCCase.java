@@ -22,6 +22,13 @@ public class PCCase extends Component{
     public PCCase(){
 
     }
+
+    @Override
+    public String toString() {
+        return "PCCase{" + super.toString() + ", " +
+                "color=" + color +
+                '}';
+    }
 }
 
 

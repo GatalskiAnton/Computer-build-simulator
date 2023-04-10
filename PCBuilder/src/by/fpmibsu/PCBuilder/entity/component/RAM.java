@@ -28,4 +28,11 @@ public class RAM extends Component{
 
     public  RAM(){}
 
+    @Override
+    public String toString() {
+        return "RAM{" + super.toString() + ", " +
+                "speed=" + speed +
+                ", memoryType=" + memoryType +
+                '}';
+    }
 }

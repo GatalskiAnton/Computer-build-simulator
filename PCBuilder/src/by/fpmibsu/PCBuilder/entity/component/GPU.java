@@ -41,6 +41,10 @@ public class GPU extends Component{
 
     @Override
     public String toString() {
-        return super.getId() + " " + super.getName() + " " + super.getBrand() + " " + super.getName() + " " + videoMemory + " " + videoMemoryType + " " + clockSpeed;
+        return "GPU{" + super.toString() + ", " +
+                "videoMemory=" + videoMemory +
+                ", clockSpeed=" + clockSpeed +
+                ", videoMemoryType=" + videoMemoryType +
+                '}';
     }
 }

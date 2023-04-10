@@ -18,6 +18,13 @@
     </orderEntry>
     <orderEntry type="module-library">
       <library>
+        <CLASSES />
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
         <CLASSES>
           <root url="file://$MODULE_DIR$/JSON-java/src/main/java" />
           <root url="file://$MODULE_DIR$/JSON-java/src/main/java" />

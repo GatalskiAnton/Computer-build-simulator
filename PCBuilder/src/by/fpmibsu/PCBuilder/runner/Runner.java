@@ -1,14 +1,19 @@
 package by.fpmibsu.PCBuilder.runner;
 import java.sql.*;
 
+import by.fpmibsu.PCBuilder.dao.CPUDao;
+import by.fpmibsu.PCBuilder.dao.DaoException;
+import by.fpmibsu.PCBuilder.dao.PCDao;
 import by.fpmibsu.PCBuilder.dao.utils.ComponentParser;
+import by.fpmibsu.PCBuilder.db.ConnectionCreator;
+import by.fpmibsu.PCBuilder.entity.PC;
+import by.fpmibsu.PCBuilder.entity.component.CPU;
+import by.fpmibsu.PCBuilder.entity.component.Cooler;
 import org.json.JSONObject;
 public class Runner {
-    public static void main(String[] args) throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
+    public static void main(String[] args) throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException, DaoException {
+        PCDao pcDao = new PCDao();
 
-        String jsonString = "{id :1, price: 30, name: supply1, brand: brand1, TDP: 100, socket: AM4, diameter:25}";
-        ComponentParser parser = new ComponentParser();
-        System.out.println(parser.parseCooler(jsonString));
-
+        System.out.println(pcDao.findPCById(1));
     }
 }

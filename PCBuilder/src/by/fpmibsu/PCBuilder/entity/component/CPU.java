@@ -10,12 +10,6 @@ public class CPU extends Component{
     private int clockSpeed;
     private int TDP;
 
-
-    @Override
-    public String toString() {
-        return super.getId() + " " + super.getPrice()  + " " + super.getName() + " " + super.getBrand() + " " + clockSpeed + " " + socket + " " + TDP + " " + core;
-    }
-
     public CPU(int id, int price, String name, String brand, int clockSpeed, Socket socket, int TDP, int core) {
         super(id, price, name, brand);
         this.socket = socket;
@@ -58,4 +52,13 @@ public class CPU extends Component{
 
     public CPU(){}
 
+    @Override
+    public String toString() {
+        return "CPU{" + super.toString() + ", " +
+                "socket=" + socket +
+                ", core=" + core +
+                ", clockSpeed=" + clockSpeed +
+                ", TDP=" + TDP +
+                '}';
+    }
 }

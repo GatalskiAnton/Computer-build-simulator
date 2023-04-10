@@ -25,6 +25,7 @@ public class PCCaseDao implements ComponentDaoI<Integer, PCCase> {
     private static final String SQL_DELETE_PCCASE = "DELETE FROM pccase WHERE id = ?, price = ?, name = ?, brand = ?, color = ?";
 
     private static final String SQL_INSERT_PCCASE = "INSERT INTO pccase(id, price, name, brand, color) VALUES (?,?,?,?,?)";
+
     @Override
     public List<PCCase> findAll() throws DaoException {
         List<PCCase> cases = new ArrayList<>();

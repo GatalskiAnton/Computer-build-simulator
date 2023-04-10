@@ -19,4 +19,11 @@ public class PowerSupply extends Component{
     public PowerSupply(){
 
     }
+
+    @Override
+    public String toString() {
+        return "PowerSupply{" + super.toString() + ", " +
+                "power=" + power +
+                '}';
+    }
 }

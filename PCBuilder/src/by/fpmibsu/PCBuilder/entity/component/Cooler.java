@@ -44,7 +44,11 @@ public class Cooler extends Component{
 
     @Override
     public String toString() {
-        return super.getId() + " " + super.getPrice() + " " + super.getName() + " " + super.getBrand() + " " + socket + " " + TDP + " " + diameter;
+        return "Cooler{" + super.toString() + ", " +
+                "socket=" + socket +
+                ", TDP=" + TDP +
+                ", diameter=" + diameter +
+                '}';
     }
 }
 

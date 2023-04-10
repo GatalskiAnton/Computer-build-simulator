@@ -12,18 +12,21 @@ public class PC {
     private Cooler cooler;
     private CPU cpu;
 
-    private ROM rom;
+    private SSD ssd;
+
+    private HDD hdd;
     private RAM ram;
     private Motherboard motherboard;
     private PowerSupply powerSupply;
 
     private GPU gpu;
 
-    public PC(by.fpmibsu.PCBuilder.entity.component.PCCase pcCase, Cooler cooler, CPU cpu, ROM rom, RAM ram, Motherboard motherboard, PowerSupply powerSupply, GPU gpu) {
+    public PC(by.fpmibsu.PCBuilder.entity.component.PCCase pcCase, Cooler cooler, CPU cpu, SSD ssd, HDD hdd, RAM ram, Motherboard motherboard, PowerSupply powerSupply, GPU gpu) {
         PCCase = pcCase;
         this.cooler = cooler;
         this.cpu = cpu;
-        this.rom = rom;
+        this.ssd = ssd;
+        this.hdd = hdd;
         this.ram = ram;
         this.motherboard = motherboard;
         this.powerSupply = powerSupply;
@@ -54,12 +57,20 @@ public class PC {
         this.cpu = cpu;
     }
 
-    public ROM getRom() {
-        return rom;
+    public SSD getSsd() {
+        return ssd;
     }
 
-    public void setRom(ROM rom) {
-        this.rom = rom;
+    public void setSsd(SSD ssd) {
+        this.ssd = ssd;
+    }
+
+    public HDD getHdd() {
+        return hdd;
+    }
+
+    public void setHdd(HDD hdd) {
+        this.hdd = hdd;
     }
 
     public RAM getRam() {
@@ -104,6 +115,22 @@ public class PC {
 
     public PC(){
 
+    }
+
+    @Override
+    public String toString() {
+        return "PC{" +
+                "id=" + id +
+                ", PCCase=" + PCCase +
+                ", cooler=" + cooler +
+                ", cpu=" + cpu +
+                ", hhd=" + hdd +
+                ", ssd=" + ssd +
+                ", ram=" + ram +
+                ", motherboard=" + motherboard +
+                ", powerSupply=" + powerSupply +
+                ", gpu=" + gpu +
+                '}';
     }
 }
 
