@@ -2,12 +2,16 @@ package by.fpmibsu.PCBuilder.entity.component;
 
 import by.fpmibsu.PCBuilder.entity.component.utils.VideoMemoryType;
 
-public class GPU extends Component{
+public class GPU extends Component {
     private int videoMemory;
     private int clockSpeed;
     private VideoMemoryType videoMemoryType;
-    public GPU(int id, int price, String name, String brand, VideoMemoryType videoMemoryType) {
+
+    public GPU(int id, int price, String name, String brand, int clockSpeed, int videoMemory,
+            VideoMemoryType videoMemoryType) {
         super(id, price, name, brand);
+        this.clockSpeed = clockSpeed;
+        this.videoMemory = videoMemory;
         this.videoMemoryType = videoMemoryType;
     }
 
@@ -35,7 +39,7 @@ public class GPU extends Component{
         this.videoMemoryType = videoMemoryType;
     }
 
-    public GPU(){
+    public GPU() {
 
     }
 
