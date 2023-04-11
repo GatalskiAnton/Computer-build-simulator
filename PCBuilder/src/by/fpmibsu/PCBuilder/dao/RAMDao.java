@@ -39,6 +39,7 @@ public class RAMDao implements ComponentDaoI<Integer, RAM> {
                 ram.setBrand(resultSet.getString("brand"));
                 ram.setSpeed(resultSet.getInt("speed"));
                 ram.setMemoryType(MemoryType.valueOf(resultSet.getString("memoryType")));
+                rams.add(ram);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

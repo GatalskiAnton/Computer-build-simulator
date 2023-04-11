@@ -37,6 +37,7 @@ public class PowerSupplyDao implements ComponentDaoI<Integer, PowerSupply> {
                 powerSupply.setName(resultSet.getString("name"));
                 powerSupply.setBrand(resultSet.getString("brand"));
                 powerSupply.setPower(resultSet.getInt("power"));
+                powerSupplies.add(powerSupply);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
