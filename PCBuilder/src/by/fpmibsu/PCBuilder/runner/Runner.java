@@ -1,8 +1,11 @@
 package by.fpmibsu.PCBuilder.runner;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 import by.fpmibsu.PCBuilder.dao.CPUDao;
+import by.fpmibsu.PCBuilder.dao.CoolerDao;
 import by.fpmibsu.PCBuilder.dao.DaoException;
 import by.fpmibsu.PCBuilder.dao.PCDao;
 import by.fpmibsu.PCBuilder.dao.utils.ComponentParser;
@@ -28,6 +31,15 @@ public class Runner {
     public static void main(String[] args)
             throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException, DaoException, InterruptedException {
 
-
+        CoolerDao coolerDao = new CoolerDao();
+        List<Cooler> coolers = coolerDao.findAll();
+        Cooler cooler = coolerDao.findComponentById(1);
+        cooler.setPrice(cooler.getPrice() * 2);
+        coolerDao.update(cooler);
+        coolerDao.delete(1);
+        Thread.sleep(10000);
+        coolerDao.insert(cooler);
+        Thread.sleep(10000);
+        coolerDao.delete(cooler);
     }
 }
