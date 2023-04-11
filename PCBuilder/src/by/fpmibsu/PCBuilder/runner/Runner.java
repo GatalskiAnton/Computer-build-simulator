@@ -26,10 +26,8 @@ import by.fpmibsu.PCBuilder.entity.component.utils.VideoMemoryType;
 
 public class Runner {
     public static void main(String[] args)
-            throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException, DaoException {
-        PCDao pcDao = new PCDao();
-        RAM ps = new RAM(1, 10, "123ram", "rmarma", 20, MemoryType.DDR3);
-        System.out.println(ComponentToJSONConverter.RAMToJSON(ps));
-        // System.out.println(pcDao.findPCById(1));
+            throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException, DaoException, InterruptedException {
+
+
     }
 }
