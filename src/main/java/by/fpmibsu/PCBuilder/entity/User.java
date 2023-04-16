@@ -6,6 +6,8 @@ public class User {
     private String login;
     private String hashPassword;
 
+    private String email;
+
     public int getId() {
         return id;
     }
@@ -14,18 +16,27 @@ public class User {
         this.id = id;
     }
 
-    public User(int id, String login, String hashPassword,  boolean admin) {
+    public User(int id, String login, String hashPassword, boolean admin, String email) {
         this.id = id;
         this.admin = admin;
         this.login = login;
         this.hashPassword = hashPassword;
+        this.email = email;
     }
 
-    public User(){}
+    public User(String login, String hashPassword, boolean admin, String email) {
+        this.admin = admin;
+        this.login = login;
+        this.hashPassword = hashPassword;
+        this.email = email;
+    }
+
+    public User() {
+    }
 
     @Override
     public String toString() {
-        return id + " " + login + " " + hashPassword + " " + admin;
+        return id + " " + login + " " + hashPassword + " " + admin + " " + email;
     }
 
     public boolean isAdmin() {
@@ -52,4 +63,11 @@ public class User {
         this.hashPassword = hashPassword;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 }

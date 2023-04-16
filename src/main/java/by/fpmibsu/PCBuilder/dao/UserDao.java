@@ -19,7 +19,7 @@ public class UserDao implements UserDaoI<Integer, User> {
 
     private static final String SQL_DELETE_USERS = "DELETE FROM users WHERE id = ? AND login = ? AND password = ? AND admin = ?";
 
-    private static final String SQL_INSERT_USERS = "INSERT INTO users(id, login, password, admin) VALUES (?,?,?,?)";
+    private static final String SQL_INSERT_USERS = "INSERT INTO users(id, login, password, admin, email) VALUES (?,?,?,?,?)";
 
     @Override
     public List<User> findAll() throws DaoException {
@@ -143,6 +143,7 @@ public class UserDao implements UserDaoI<Integer, User> {
             statement.setString(2,user.getLogin());
             statement.setString(3, user.getHashPassword());
             statement.setBoolean(4,user.isAdmin());
+            statement.setString(5, user.getEmail());
             rowsUpdate = statement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);

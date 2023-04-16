@@ -8,20 +8,20 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 public class ConnectionCreator {
-    private static final Properties properties = new Properties();
+    //private static final Properties properties = new Properties();
     private static final String DATABASE_URL;
     static{
         try {
-            properties.load(new FileReader("res/database.properties"));
-            String driverName = (String) properties.get("db.driver");
+            //properties.load(new FileReader("res/database.properties"));
+            String driverName = "com.mysql.cj.jdbc.Driver";
             Class.forName(driverName);
-        } catch (IOException | ClassNotFoundException e) {
+        } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
-        DATABASE_URL = (String) properties.get("db.url");
+        DATABASE_URL = "jdbc:mysql://localhost:3306/pcbuilder";
     }
     private ConnectionCreator() {}
     public static Connection createConnection() throws SQLException{
-        return DriverManager.getConnection(DATABASE_URL, properties);
+        return DriverManager.getConnection(DATABASE_URL, "root","root");
     }
 }
