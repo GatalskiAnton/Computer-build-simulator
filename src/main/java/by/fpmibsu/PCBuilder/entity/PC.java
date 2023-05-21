@@ -1,11 +1,13 @@
 package by.fpmibsu.PCBuilder.entity;
 
-
 import by.fpmibsu.PCBuilder.entity.component.*;
 
 public class PC {
 
     private int id;
+
+    private int userId;
+
     private PCCase PCCase;
     private Cooler cooler;
     private CPU cpu;
@@ -19,8 +21,9 @@ public class PC {
 
     private GPU gpu;
 
-    public PC(PCCase pcCase, Cooler cooler, CPU cpu, SSD ssd, HDD hdd, RAM ram, Motherboard motherboard, PowerSupply powerSupply, GPU gpu) {
-        PCCase = pcCase;
+    public PC(int userId, PCCase pcCase, Cooler cooler, CPU cpu, SSD ssd, HDD hdd, RAM ram, Motherboard motherboard, PowerSupply powerSupply, GPU gpu) {
+        this.userId = userId;
+        this.PCCase = pcCase;
         this.cooler = cooler;
         this.cpu = cpu;
         this.ssd = ssd;
@@ -111,8 +114,16 @@ public class PC {
         this.id = id;
     }
 
-    public PC(){
+    public PC() {
 
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        userId = userId;
     }
 
     @Override

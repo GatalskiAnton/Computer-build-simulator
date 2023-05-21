@@ -33,7 +33,7 @@ public class RegistrationServlet extends HttpServlet {
         String password = obj.get("password").getAsString();
         String email = obj.get("email").getAsString();
         try {
-            userDao.insert(new User(12,login, Authentication.getHashPassword(password),false,email));
+            userDao.insert(new User(12,login, Authentication.getHashPassword(password),false,email, false));
         } catch (DaoException e) {
             throw new RuntimeException(e);
         }

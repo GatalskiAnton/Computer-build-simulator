@@ -8,6 +8,8 @@ public class User {
 
     private String email;
 
+    private boolean fromGoogle;
+
     public int getId() {
         return id;
     }
@@ -16,13 +18,14 @@ public class User {
         this.id = id;
     }
 
-    public User(int id, String login, String hashPassword, boolean admin, String email) {
+    public User(int id, String login, String hashPassword, boolean admin, String email, boolean fromGoogle) {
         this.id = id;
         this.admin = admin;
         this.login = login;
         this.hashPassword = hashPassword;
         this.email = email;
     }
+
 
     public User(String login, String hashPassword, boolean admin, String email) {
         this.admin = admin;
@@ -69,5 +72,13 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public boolean isFromGoogle() {
+        return fromGoogle;
+    }
+
+    public void setFromGoogle(boolean fromGoogle) {
+        this.fromGoogle = fromGoogle;
     }
 }
