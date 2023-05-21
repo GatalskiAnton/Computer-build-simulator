@@ -1,0 +1,11 @@
+[{
+  "login" : "admin",
+  "password" : "qwerty",
+  "role" : "администратор"
+},
+  {
+    "login" : "user",
+    "password" : "123",
+    "role" : "библиотекарь"
+  }]
+

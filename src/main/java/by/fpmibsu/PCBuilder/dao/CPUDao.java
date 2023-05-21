@@ -22,6 +22,9 @@ public class CPUDao implements ComponentDaoI<Integer, CPU> {
 
     private static final String SQL_INSERT_CPU = "INSERT INTO cpu(id, price, name, brand, clockSpeed, socket, TDP, core) VALUES (?,?,?,?,?,?,?,?)";
 
+    private static final String SQL_SELECT_CPU_BY_SOCKET = "SELECT * FROM cpu WHERE socket = ?";
+
+    private static final String SQl_SELECT_CPU_BY_TDP = "SELECT * FROM cpu WHERE TDP = ?";
 
     @Override
     public List<CPU> findAll() throws DaoException {
@@ -32,7 +35,7 @@ public class CPUDao implements ComponentDaoI<Integer, CPU> {
             connection = ConnectionCreator.createConnection();
             statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(SQL_SELECT_ALL_CPU);
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 CPU cpu = new CPU();
                 cpu.setId(resultSet.getInt("id"));
                 cpu.setPrice(resultSet.getInt("price"));
@@ -62,7 +65,7 @@ public class CPUDao implements ComponentDaoI<Integer, CPU> {
             statement = connection.prepareStatement(SQL_SELECT_CPU_BY_ID);
             statement.setInt(1, id);
             ResultSet resultSet = statement.executeQuery();
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 cpu.setId(resultSet.getInt("id"));
                 cpu.setPrice(resultSet.getInt("price"));
                 cpu.setName(resultSet.getString("name"));
@@ -88,12 +91,12 @@ public class CPUDao implements ComponentDaoI<Integer, CPU> {
             connection = ConnectionCreator.createConnection();
             statement = connection.prepareStatement(SQL_UPDATE_CPU);
             statement.setInt(1, cpu.getId());
-            statement.setInt(2,cpu.getPrice());
-            statement.setString(3,cpu.getName());
-            statement.setString(4,cpu.getBrand());
+            statement.setInt(2, cpu.getPrice());
+            statement.setString(3, cpu.getName());
+            statement.setString(4, cpu.getBrand());
             statement.setInt(5, cpu.getClockSpeed());
-            statement.setString(6,cpu.getSocket().toString());
-            statement.setInt(7,cpu.getTDP());
+            statement.setString(6, cpu.getSocket().toString());
+            statement.setInt(7, cpu.getTDP());
             statement.setInt(8, cpu.getCore());
             statement.executeUpdate();
         } catch (SQLException e) {
@@ -113,11 +116,11 @@ public class CPUDao implements ComponentDaoI<Integer, CPU> {
             connection = ConnectionCreator.createConnection();
             statement = connection.prepareStatement(SQL_DELETE_CPU);
             statement.setInt(1, cpu.getId());
-            statement.setInt(2,cpu.getPrice());
-            statement.setString(3,cpu.getName());
-            statement.setString(4,cpu.getBrand());
-            statement.setInt(5,cpu.getClockSpeed());
-            statement.setString(6,cpu.getSocket().toString());
+            statement.setInt(2, cpu.getPrice());
+            statement.setString(3, cpu.getName());
+            statement.setString(4, cpu.getBrand());
+            statement.setInt(5, cpu.getClockSpeed());
+            statement.setString(6, cpu.getSocket().toString());
             statement.setInt(7, cpu.getTDP());
             statement.setInt(8, cpu.getCore());
             rowsUpdate = statement.executeUpdate();
@@ -150,7 +153,7 @@ public class CPUDao implements ComponentDaoI<Integer, CPU> {
     }
 
     @Override
-    public int insert(CPU cpu) throws DaoException{
+    public int insert(CPU cpu) throws DaoException {
         int rowsUpdate;
         Connection connection = null;
         PreparedStatement statement = null;
@@ -158,12 +161,12 @@ public class CPUDao implements ComponentDaoI<Integer, CPU> {
             connection = ConnectionCreator.createConnection();
             statement = connection.prepareStatement(SQL_INSERT_CPU);
             statement.setInt(1, cpu.getId());
-            statement.setInt(2,cpu.getPrice());
-            statement.setString(3,cpu.getName());
-            statement.setString(4,cpu.getBrand());
+            statement.setInt(2, cpu.getPrice());
+            statement.setString(3, cpu.getName());
+            statement.setString(4, cpu.getBrand());
             statement.setInt(5, cpu.getClockSpeed());
-            statement.setString(6,cpu.getSocket().toString());
-            statement.setInt(7,cpu.getTDP());
+            statement.setString(6, cpu.getSocket().toString());
+            statement.setInt(7, cpu.getTDP());
             statement.setInt(8, cpu.getCore());
             rowsUpdate = statement.executeUpdate();
         } catch (SQLException e) {
@@ -173,5 +176,63 @@ public class CPUDao implements ComponentDaoI<Integer, CPU> {
         }
 
         return rowsUpdate;
+    }
+
+    public List<CPU> findComponentBySocket(Socket socket) throws DaoException {
+        List<CPU> cpus = new ArrayList<>();
+        Connection connection = null;
+        PreparedStatement statement = null;
+        try {
+            connection = ConnectionCreator.createConnection();
+            statement = connection.prepareStatement(SQL_SELECT_CPU_BY_SOCKET);
+            statement.setString(1, socket.toString());
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                CPU cpu = new CPU();
+                cpu.setId(resultSet.getInt("id"));
+                cpu.setPrice(resultSet.getInt("price"));
+                cpu.setName(resultSet.getString("name"));
+                cpu.setBrand(resultSet.getString("brand"));
+                cpu.setClockSpeed(resultSet.getInt("clockSpeed"));
+                cpu.setTDP(resultSet.getInt("TDP"));
+                cpu.setSocket(Socket.valueOf(resultSet.getString("socket")));
+                cpu.setCore(resultSet.getInt("core"));
+                cpus.add(cpu);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            close(connection);
+        }
+        return cpus;
+    }
+
+    public List<CPU> findComponentByTDP(int TDP) throws DaoException {
+        List<CPU> cpus = new ArrayList<>();
+        Connection connection = null;
+        PreparedStatement statement = null;
+        try {
+            connection = ConnectionCreator.createConnection();
+            statement = connection.prepareStatement(SQl_SELECT_CPU_BY_TDP);
+            statement.setInt(1, TDP);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                CPU cpu = new CPU();
+                cpu.setId(resultSet.getInt("id"));
+                cpu.setPrice(resultSet.getInt("price"));
+                cpu.setName(resultSet.getString("name"));
+                cpu.setBrand(resultSet.getString("brand"));
+                cpu.setClockSpeed(resultSet.getInt("clockSpeed"));
+                cpu.setTDP(resultSet.getInt("TDP"));
+                cpu.setSocket(Socket.valueOf(resultSet.getString("socket")));
+                cpu.setCore(resultSet.getInt("core"));
+                cpus.add(cpu);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            close(connection);
+        }
+        return cpus;
     }
 }

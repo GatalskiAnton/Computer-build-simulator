@@ -1,35 +1,37 @@
-C:\Users\ag629\IdeaProjects\tomcat\src\main\java\by\fpmibsu\PCBuilder\dao\SSDDao.java
-C:\Users\ag629\IdeaProjects\tomcat\src\main\java\by\fpmibsu\PCBuilder\dao\DaoException.java
-C:\Users\ag629\IdeaProjects\tomcat\src\main\java\by\fpmibsu\PCBuilder\entity\component\Motherboard.java
-C:\Users\ag629\IdeaProjects\tomcat\src\main\java\by\fpmibsu\PCBuilder\entity\component\SSD.java
-C:\Users\ag629\IdeaProjects\tomcat\src\main\java\by\fpmibsu\PCBuilder\entity\component\PCCase.java
-C:\Users\ag629\IdeaProjects\tomcat\src\main\java\by\fpmibsu\PCBuilder\dao\CPUDao.java
-C:\Users\ag629\IdeaProjects\tomcat\src\main\java\by\fpmibsu\PCBuilder\dao\RAMDao.java
-C:\Users\ag629\IdeaProjects\tomcat\src\main\java\by\fpmibsu\PCBuilder\dao\HDDDao.java
-C:\Users\ag629\IdeaProjects\tomcat\src\main\java\by\fpmibsu\PCBuilder\db\ConnectionCreator.java
-C:\Users\ag629\IdeaProjects\tomcat\src\main\java\by\fpmibsu\PCBuilder\dao\GPUDao.java
-C:\Users\ag629\IdeaProjects\tomcat\src\main\java\by\fpmibsu\PCBuilder\dao\UserDao.java
-C:\Users\ag629\IdeaProjects\tomcat\src\main\java\by\fpmibsu\PCBuilder\dao\PCDaoI.java
-C:\Users\ag629\IdeaProjects\tomcat\src\main\java\by\fpmibsu\PCBuilder\entity\component\Component.java
-C:\Users\ag629\IdeaProjects\tomcat\src\main\java\by\fpmibsu\PCBuilder\entity\component\ROM.java
-C:\Users\ag629\IdeaProjects\tomcat\src\main\java\by\fpmibsu\PCBuilder\entity\component\CPU.java
-C:\Users\ag629\IdeaProjects\tomcat\src\main\java\by\fpmibsu\PCBuilder\dao\utils\ComponentParser.java
-C:\Users\ag629\IdeaProjects\tomcat\src\main\java\by\fpmibsu\PCBuilder\entity\component\GPU.java
-C:\Users\ag629\IdeaProjects\tomcat\src\main\java\by\fpmibsu\PCBuilder\entity\component\utils\Socket.java
-C:\Users\ag629\IdeaProjects\tomcat\src\main\java\by\fpmibsu\PCBuilder\dao\ComponentDaoI.java
-C:\Users\ag629\IdeaProjects\tomcat\src\main\java\by\fpmibsu\PCBuilder\entity\component\RAM.java
-C:\Users\ag629\IdeaProjects\tomcat\src\main\java\by\fpmibsu\PCBuilder\dao\UserDaoI.java
-C:\Users\ag629\IdeaProjects\tomcat\src\main\java\by\fpmibsu\PCBuilder\entity\component\PowerSupply.java
-C:\Users\ag629\IdeaProjects\tomcat\src\main\java\by\fpmibsu\PCBuilder\entity\PC.java
-C:\Users\ag629\IdeaProjects\tomcat\src\main\java\by\fpmibsu\PCBuilder\entity\User.java
-C:\Users\ag629\IdeaProjects\tomcat\src\main\java\by\fpmibsu\PCBuilder\runner\Runner.java
-C:\Users\ag629\IdeaProjects\tomcat\src\main\java\by\fpmibsu\PCBuilder\dao\PowerSupplyDao.java
-C:\Users\ag629\IdeaProjects\tomcat\src\main\java\by\fpmibsu\PCBuilder\entity\component\utils\Color.java
-C:\Users\ag629\IdeaProjects\tomcat\src\main\java\by\fpmibsu\PCBuilder\dao\PCCaseDao.java
-C:\Users\ag629\IdeaProjects\tomcat\src\main\java\by\fpmibsu\PCBuilder\entity\component\utils\VideoMemoryType.java
-C:\Users\ag629\IdeaProjects\tomcat\src\main\java\by\fpmibsu\PCBuilder\dao\PCDao.java
-C:\Users\ag629\IdeaProjects\tomcat\src\main\java\by\fpmibsu\PCBuilder\entity\component\utils\MemoryType.java
-C:\Users\ag629\IdeaProjects\tomcat\src\main\java\by\fpmibsu\PCBuilder\entity\component\HDD.java
-C:\Users\ag629\IdeaProjects\tomcat\src\main\java\by\fpmibsu\PCBuilder\dao\MotherboardDao.java
-C:\Users\ag629\IdeaProjects\tomcat\src\main\java\by\fpmibsu\PCBuilder\dao\CoolerDao.java
-C:\Users\ag629\IdeaProjects\tomcat\src\main\java\by\fpmibsu\PCBuilder\entity\component\Cooler.java
+C:\Users\sasha\Рабочий стол\123\src\main\java\by\fpmibsu\PCBuilder\dao\ComponentDaoI.java
+C:\Users\sasha\Рабочий стол\123\src\main\java\by\fpmibsu\PCBuilder\dao\utils\ComponentParser.java
+C:\Users\sasha\Рабочий стол\123\src\main\java\by\fpmibsu\PCBuilder\entity\component\PowerSupply.java
+C:\Users\sasha\Рабочий стол\123\src\main\java\by\fpmibsu\PCBuilder\entity\component\utils\MemoryType.java
+C:\Users\sasha\Рабочий стол\123\src\main\java\by\fpmibsu\PCBuilder\entity\PC.java
+C:\Users\sasha\Рабочий стол\123\src\main\java\by\fpmibsu\PCBuilder\entity\component\utils\VideoMemoryType.java
+C:\Users\sasha\Рабочий стол\123\src\main\java\by\fpmibsu\PCBuilder\entity\component\utils\Socket.java
+C:\Users\sasha\Рабочий стол\123\src\main\java\by\fpmibsu\PCBuilder\db\ConnectionCreator.java
+C:\Users\sasha\Рабочий стол\123\src\main\java\by\fpmibsu\PCBuilder\entity\component\SSD.java
+C:\Users\sasha\Рабочий стол\123\src\main\java\by\fpmibsu\PCBuilder\dao\CoolerDao.java
+C:\Users\sasha\Рабочий стол\123\src\main\java\by\fpmibsu\PCBuilder\dao\UserDao.java
+C:\Users\sasha\Рабочий стол\123\src\main\java\by\fpmibsu\PCBuilder\entity\component\HDD.java
+C:\Users\sasha\Рабочий стол\123\src\main\java\by\fpmibsu\PCBuilder\dao\UserDaoI.java
+C:\Users\sasha\Рабочий стол\123\src\main\java\by\fpmibsu\PCBuilder\entity\asdasda.java
+C:\Users\sasha\Рабочий стол\123\src\main\java\by\fpmibsu\PCBuilder\entity\component\asgdaghsfdashgdf.java
+C:\Users\sasha\Рабочий стол\123\src\main\java\by\fpmibsu\PCBuilder\dao\PowerSupplyDao.java
+C:\Users\sasha\Рабочий стол\123\src\main\java\by\fpmibsu\PCBuilder\dao\GPUDao.java
+C:\Users\sasha\Рабочий стол\123\src\main\java\by\fpmibsu\PCBuilder\entity\component\PCCase.java
+C:\Users\sasha\Рабочий стол\123\src\main\java\by\fpmibsu\PCBuilder\entity\component\utils\Color.java
+C:\Users\sasha\Рабочий стол\123\src\main\java\by\fpmibsu\PCBuilder\entity\component\Motherboard.java
+C:\Users\sasha\Рабочий стол\123\src\main\java\by\fpmibsu\PCBuilder\dao\HDDDao.java
+C:\Users\sasha\Рабочий стол\123\src\main\java\by\fpmibsu\PCBuilder\entity\component\Cooler.java
+C:\Users\sasha\Рабочий стол\123\src\main\java\by\fpmibsu\PCBuilder\entity\component\ROM.java
+C:\Users\sasha\Рабочий стол\123\src\main\java\by\fpmibsu\PCBuilder\dao\RAMDao.java
+C:\Users\sasha\Рабочий стол\123\src\main\java\by\fpmibsu\PCBuilder\dao\CPUDao.java
+C:\Users\sasha\Рабочий стол\123\src\main\java\by\fpmibsu\PCBuilder\entity\component\RAM.java
+C:\Users\sasha\Рабочий стол\123\src\main\java\by\fpmibsu\PCBuilder\dao\MotherboardDao.java
+C:\Users\sasha\Рабочий стол\123\src\main\java\by\fpmibsu\PCBuilder\entity\component\Component.java
+C:\Users\sasha\Рабочий стол\123\src\main\java\by\fpmibsu\PCBuilder\runner\Runner.java
+C:\Users\sasha\Рабочий стол\123\src\main\java\by\fpmibsu\PCBuilder\dao\PCCaseDao.java
+C:\Users\sasha\Рабочий стол\123\src\main\java\by\fpmibsu\PCBuilder\dao\DaoException.java
+C:\Users\sasha\Рабочий стол\123\src\main\java\by\fpmibsu\PCBuilder\entity\User.java
+C:\Users\sasha\Рабочий стол\123\src\main\java\by\fpmibsu\PCBuilder\dao\PCDaoI.java
+C:\Users\sasha\Рабочий стол\123\src\main\java\by\fpmibsu\PCBuilder\dao\SSDDao.java
+C:\Users\sasha\Рабочий стол\123\src\main\java\by\fpmibsu\PCBuilder\dao\PCDao.java
+C:\Users\sasha\Рабочий стол\123\src\main\java\by\fpmibsu\PCBuilder\entity\component\GPU.java
+C:\Users\sasha\Рабочий стол\123\src\main\java\by\fpmibsu\PCBuilder\entity\component\CPU.java

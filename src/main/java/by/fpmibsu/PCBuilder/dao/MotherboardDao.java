@@ -25,6 +25,8 @@ public class MotherboardDao implements ComponentDaoI<Integer, Motherboard> {
 
     private static final String SQL_INSERT_MOTHERBOARD = "INSERT INTO motherboard(id, price, name, brand, socket) VALUES (?,?,?,?,?)";
 
+    private static final String SQL_SELECT_MOTHERBOARD_BY_SOCKET = "SELECT * FROM motherboard WHERE socket = ?";
+
     @Override
     public List<Motherboard> findAll() throws DaoException {
         List<Motherboard> motherboards = new ArrayList<>();
@@ -34,7 +36,7 @@ public class MotherboardDao implements ComponentDaoI<Integer, Motherboard> {
             connection = ConnectionCreator.createConnection();
             statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(SQL_SELECT_ALL_MOTHERBOARD);
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 Motherboard motherboard = new Motherboard();
                 motherboard.setId(resultSet.getInt("id"));
                 motherboard.setPrice(resultSet.getInt("price"));
@@ -61,7 +63,7 @@ public class MotherboardDao implements ComponentDaoI<Integer, Motherboard> {
             statement = connection.prepareStatement(SQL_SELECT_MOTHERBOARD_BY_ID);
             statement.setInt(1, id);
             ResultSet resultSet = statement.executeQuery();
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 motherboard.setId(resultSet.getInt("id"));
                 motherboard.setPrice(resultSet.getInt("price"));
                 motherboard.setName(resultSet.getString("name"));
@@ -84,9 +86,9 @@ public class MotherboardDao implements ComponentDaoI<Integer, Motherboard> {
             connection = ConnectionCreator.createConnection();
             statement = connection.prepareStatement(SQL_UPDATE_MOTHERBOARD);
             statement.setInt(1, motherboard.getId());
-            statement.setInt(2,motherboard.getPrice());
-            statement.setString(3,motherboard.getName());
-            statement.setString(4,motherboard.getBrand());
+            statement.setInt(2, motherboard.getPrice());
+            statement.setString(3, motherboard.getName());
+            statement.setString(4, motherboard.getBrand());
             statement.setString(5, motherboard.getSocket().toString());
             statement.setInt(6, motherboard.getId());
             statement.executeUpdate();
@@ -107,9 +109,9 @@ public class MotherboardDao implements ComponentDaoI<Integer, Motherboard> {
             connection = ConnectionCreator.createConnection();
             statement = connection.prepareStatement(SQL_DELETE_MOTHERBOARD);
             statement.setInt(1, motherboard.getId());
-            statement.setInt(2,motherboard.getPrice());
-            statement.setString(3,motherboard.getName());
-            statement.setString(4,motherboard.getBrand());
+            statement.setInt(2, motherboard.getPrice());
+            statement.setString(3, motherboard.getName());
+            statement.setString(4, motherboard.getBrand());
             statement.setString(5, motherboard.getSocket().toString());
             rowsUpdate = statement.executeUpdate();
         } catch (SQLException e) {
@@ -161,5 +163,32 @@ public class MotherboardDao implements ComponentDaoI<Integer, Motherboard> {
         }
 
         return rowsUpdate;
+    }
+
+    public List<Motherboard> findComponentBySocket(Socket socket) throws DaoException {
+        List<Motherboard> motherboards = new ArrayList<>();
+
+        Connection connection = null;
+        PreparedStatement statement = null;
+        try {
+            connection = ConnectionCreator.createConnection();
+            statement = connection.prepareStatement(SQL_SELECT_MOTHERBOARD_BY_SOCKET);
+            statement.setString(1, socket.toString());
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                Motherboard motherboard = new Motherboard();
+                motherboard.setId(resultSet.getInt("id"));
+                motherboard.setPrice(resultSet.getInt("price"));
+                motherboard.setName(resultSet.getString("name"));
+                motherboard.setBrand(resultSet.getString("brand"));
+                motherboard.setSocket(Socket.valueOf(resultSet.getString("socket")));
+                motherboards.add(motherboard);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            close(connection);
+        }
+        return motherboards;
     }
 }

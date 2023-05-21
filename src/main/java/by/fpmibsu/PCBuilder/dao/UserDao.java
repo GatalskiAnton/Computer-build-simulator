@@ -19,7 +19,13 @@ public class UserDao implements UserDaoI<Integer, User> {
 
     private static final String SQL_DELETE_USERS = "DELETE FROM users WHERE id = ? AND login = ? AND password = ? AND admin = ?";
 
-    private static final String SQL_INSERT_USERS = "INSERT INTO users(id, login, password, admin) VALUES (?,?,?,?)";
+    private static final String SQL_INSERT_USERS = "INSERT INTO users(login, password, admin, email) VALUES (?,?,?,?)";
+
+    private static final String SQL_SELECT_USERS_BY_LOGIN = "SELECT * FROM users WHERE login = ?";
+
+    private static final String SQL_SELECT_USER_BY_LOGIN_AND_HASHPASSWORD = "SELECT * FROM users WHERE login = ? AND password = ?";
+
+    private static final String SQL_INSERT_BY_LOGIN = "INSERT INTO users(login, fromGoogle) VALUES(?,?)";
 
     @Override
     public List<User> findAll() throws DaoException {
@@ -30,7 +36,7 @@ public class UserDao implements UserDaoI<Integer, User> {
             connection = ConnectionCreator.createConnection();
             statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(SQL_SELECT_ALL_USERS);
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 User user = new User();
                 user.setId(resultSet.getInt("id"));
                 user.setLogin(resultSet.getString("login"));
@@ -56,7 +62,7 @@ public class UserDao implements UserDaoI<Integer, User> {
             statement = connection.prepareStatement(SQL_SELECT_USERS_BY_ID);
             statement.setInt(1, id);
             ResultSet resultSet = statement.executeQuery();
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 user.setId(resultSet.getInt("id"));
                 user.setLogin(resultSet.getString("login"));
                 user.setHashPassword(resultSet.getString("password"));
@@ -99,9 +105,9 @@ public class UserDao implements UserDaoI<Integer, User> {
             connection = ConnectionCreator.createConnection();
             statement = connection.prepareStatement(SQL_DELETE_USERS);
             statement.setInt(1, user.getId());
-            statement.setString(2,user.getLogin());
+            statement.setString(2, user.getLogin());
             statement.setString(3, user.getHashPassword());
-            statement.setBoolean(4,user.isAdmin());
+            statement.setBoolean(4, user.isAdmin());
             rowsUpdate = statement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -139,10 +145,10 @@ public class UserDao implements UserDaoI<Integer, User> {
         try {
             connection = ConnectionCreator.createConnection();
             statement = connection.prepareStatement(SQL_INSERT_USERS);
-            statement.setInt(1, user.getId());
-            statement.setString(2,user.getLogin());
-            statement.setString(3, user.getHashPassword());
-            statement.setBoolean(4,user.isAdmin());
+            statement.setString(1, user.getLogin());
+            statement.setString(2, user.getHashPassword());
+            statement.setBoolean(3, user.isAdmin());
+            statement.setString(4, user.getEmail());
             rowsUpdate = statement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -152,4 +158,74 @@ public class UserDao implements UserDaoI<Integer, User> {
 
         return rowsUpdate;
     }
+
+    @Override
+    public int insertByLogin(User user) throws DaoException {
+
+        int rowsUpdate;
+        Connection connection = null;
+        PreparedStatement statement = null;
+        try {
+            connection = ConnectionCreator.createConnection();
+            statement = connection.prepareStatement(SQL_INSERT_BY_LOGIN);
+            statement.setString(1, user.getLogin());
+            statement.setBoolean(2, user.isFromGoogle());
+            rowsUpdate = statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            close(connection);
+        }
+
+        return rowsUpdate;
+    }
+
+    public User findUserByLogin(String login) throws DaoException {
+        User user = new User();
+        Connection connection = null;
+        PreparedStatement statement = null;
+        try {
+            connection = ConnectionCreator.createConnection();
+            statement = connection.prepareStatement(SQL_SELECT_USERS_BY_LOGIN);
+            statement.setString(1, login);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                user.setId(resultSet.getInt("id"));
+                user.setLogin(resultSet.getString("login"));
+                user.setHashPassword(resultSet.getString("password"));
+                user.setAdmin(resultSet.getInt("admin") != 0);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            close(connection);
+        }
+        return user;
+    }
+
+    public User findUserByLogin(String login, String hashPassword) throws DaoException {
+        User user = new User();
+        Connection connection = null;
+        PreparedStatement statement = null;
+        try {
+            connection = ConnectionCreator.createConnection();
+            statement = connection.prepareStatement(SQL_SELECT_USER_BY_LOGIN_AND_HASHPASSWORD);
+            statement.setString(1, login);
+            statement.setString(2, hashPassword);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                user.setId(resultSet.getInt("id"));
+                user.setLogin(resultSet.getString("login"));
+                user.setHashPassword(resultSet.getString("password"));
+                user.setAdmin(resultSet.getInt("admin") != 0);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            close(connection);
+        }
+        return user;
+    }
+
+
 }
