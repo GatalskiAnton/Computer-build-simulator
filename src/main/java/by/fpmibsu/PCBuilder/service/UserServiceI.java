@@ -9,10 +9,15 @@ public interface UserServiceI {
 
     boolean isCorrectUser(String login, String password) throws DaoException, GoogleException;
 
-    User changePassword(User user, String hashPassword) throws DaoException;
+    User changePassword(User user, String newPassword) throws DaoException;
 
-    boolean createUser(String login, String password) throws DaoException;
+    boolean createUser(String login, String password, boolean fromGoogle) throws DaoException;
+    default boolean createUser(String login, String password) throws DaoException {
+        return  createUser(login, password, false);
+    }
 
     boolean createUserByGoogle(String login) throws DaoException;
+
+    User getUser(String login);
 
 }

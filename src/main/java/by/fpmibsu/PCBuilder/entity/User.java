@@ -39,7 +39,7 @@ public class User {
 
     @Override
     public String toString() {
-        return id + " " + login + " " + hashPassword + " " + admin + " " + email;
+        return id + " " + login + " " + hashPassword + " " + admin + " " + fromGoogle;
     }
 
     public boolean isAdmin() {

@@ -13,13 +13,13 @@ public class UserDao implements UserDaoI<Integer, User> {
 
     private static final String SQL_SELECT_USERS_BY_ID = "SELECT * FROM users WHERE id = ?";
 
-    private static final String SQL_UPDATE_USERS = "UPDATE users SET id = ?, login = ?, password = ?, admin = ? WHERE id = ?";
+    private static final String SQL_UPDATE_USERS = "UPDATE users SET login = ?, password = ?, admin = ?, email = ?, fromGoogle = ? WHERE id = ?";
 
     private static final String SQl_DELETE_USERS_BY_ID = "DELETE FROM users WHERE id = ?";
 
     private static final String SQL_DELETE_USERS = "DELETE FROM users WHERE id = ? AND login = ? AND password = ? AND admin = ?";
 
-    private static final String SQL_INSERT_USERS = "INSERT INTO users(login, password, admin, email) VALUES (?,?,?,?)";
+    private static final String SQL_INSERT_USERS = "INSERT INTO users(login, password, admin, email, fromGoogle) VALUES (?,?,?,?,?)";
 
     private static final String SQL_SELECT_USERS_BY_LOGIN = "SELECT * FROM users WHERE login = ?";
 
@@ -83,10 +83,12 @@ public class UserDao implements UserDaoI<Integer, User> {
         try {
             connection = ConnectionCreator.createConnection();
             statement = connection.prepareStatement(SQL_UPDATE_USERS);
-            statement.setInt(1, user.getId());
-            statement.setString(2, user.getLogin());
-            statement.setString(3, user.getHashPassword());
-            statement.setBoolean(4, user.isAdmin());
+            statement.setString(1, user.getLogin());
+            statement.setString(2, user.getHashPassword());
+            statement.setBoolean(3, user.isAdmin());
+            statement.setString(4, user.getLogin());
+            statement.setBoolean(5, user.isFromGoogle());
+            statement.setInt(6, user.getId());
             statement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -141,7 +143,7 @@ public class UserDao implements UserDaoI<Integer, User> {
     public int insert(User user) throws DaoException {
         int rowsUpdate;
         Connection connection = null;
-        PreparedStatement statement = null;
+        PreparedStatement statement;
         try {
             connection = ConnectionCreator.createConnection();
             statement = connection.prepareStatement(SQL_INSERT_USERS);
@@ -149,6 +151,7 @@ public class UserDao implements UserDaoI<Integer, User> {
             statement.setString(2, user.getHashPassword());
             statement.setBoolean(3, user.isAdmin());
             statement.setString(4, user.getEmail());
+            statement.setBoolean(5, user.isFromGoogle());
             rowsUpdate = statement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -182,13 +185,19 @@ public class UserDao implements UserDaoI<Integer, User> {
 
     public User findUserByLogin(String login) throws DaoException {
         User user = new User();
-        Connection connection = null;
-        PreparedStatement statement = null;
+        Connection connection;
+        PreparedStatement statement;
+        ResultSet resultSet;
         try {
             connection = ConnectionCreator.createConnection();
             statement = connection.prepareStatement(SQL_SELECT_USERS_BY_LOGIN);
             statement.setString(1, login);
-            ResultSet resultSet = statement.executeQuery();
+            resultSet = statement.executeQuery();
+        }
+        catch (SQLException e){
+            return null;
+        }
+        try {
             while (resultSet.next()) {
                 user.setId(resultSet.getInt("id"));
                 user.setLogin(resultSet.getString("login"));
@@ -196,7 +205,7 @@ public class UserDao implements UserDaoI<Integer, User> {
                 user.setAdmin(resultSet.getInt("admin") != 0);
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+           throw new RuntimeException();
         } finally {
             close(connection);
         }
@@ -220,7 +229,8 @@ public class UserDao implements UserDaoI<Integer, User> {
                 user.setAdmin(resultSet.getInt("admin") != 0);
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            System.out.println(e);
+            user = null;
         } finally {
             close(connection);
         }
