@@ -1,6 +1,10 @@
 package by.fpmibsu.PCBuilder.service;
 
+import by.fpmibsu.PCBuilder.dao.DaoException;
+import by.fpmibsu.PCBuilder.dao.PCDao;
+import by.fpmibsu.PCBuilder.dao.UserDao;
 import by.fpmibsu.PCBuilder.entity.PC;
+
 
 public class PCService implements PCServiceI {
 
@@ -21,5 +25,25 @@ public class PCService implements PCServiceI {
         price += pc.getPowerSupply().getPrice();
         price += pc.getRam().getPrice();
         return price;
+    }
+
+    @Override
+    public PC getPC(int pcId) {
+        PCDao pcDao = new PCDao();
+        try {
+             return pcDao.findPCById(pcId);
+        } catch (DaoException e) {
+            return null;
+        }
+    }
+
+    @Override
+    public PC getPc(String login) {
+        UserDao userDao = new UserDao();
+        try {
+            return getPC(userDao.getPcById(userDao.findUserByLogin(login).getId()));
+        } catch (DaoException e) {
+            return  null;
+        }
     }
 }

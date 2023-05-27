@@ -1,0 +1,25 @@
+<component name="libraryTable">
+  <library name="io.swagger.jaxrs" type="repository">
+    <properties maven-id="io.swagger:swagger-jaxrs:1.5.20" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/swagger-jaxrs-1.5.20.jar!/" />
+      <root url="jar://$PROJECT_DIR$/jackson-databind-2.9.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/jackson-core-2.9.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/swagger-core-1.5.20.jar!/" />
+      <root url="jar://$PROJECT_DIR$/commons-lang3-3.2.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/slf4j-api-1.7.22.jar!/" />
+      <root url="jar://$PROJECT_DIR$/jackson-annotations-2.9.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/jackson-dataformat-yaml-2.9.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/snakeyaml-1.18.jar!/" />
+      <root url="jar://$PROJECT_DIR$/swagger-models-1.5.20.jar!/" />
+      <root url="jar://$PROJECT_DIR$/swagger-annotations-1.5.20.jar!/" />
+      <root url="jar://$PROJECT_DIR$/validation-api-1.1.0.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/jsr311-api-1.1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/reflections-0.9.11.jar!/" />
+      <root url="jar://$PROJECT_DIR$/javassist-3.21.0-GA.jar!/" />
+      <root url="jar://$PROJECT_DIR$/guava-20.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

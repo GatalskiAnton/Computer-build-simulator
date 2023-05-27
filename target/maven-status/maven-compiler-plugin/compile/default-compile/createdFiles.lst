@@ -9,12 +9,10 @@ by\fpmibsu\PCBuilder\service\PCCaseService.class
 by\fpmibsu\PCBuilder\controller\servlets\MainServlet.class
 by\fpmibsu\PCBuilder\entity\component\utils\Color.class
 by\fpmibsu\PCBuilder\service\GPUService.class
-by\fpmibsu\PCBuilder\controller\servlets\ComponentServlet.class
 by\fpmibsu\PCBuilder\entity\component\HDD.class
 by\fpmibsu\PCBuilder\service\PCServiceI.class
 by\fpmibsu\PCBuilder\service\UserServiceI.class
 by\fpmibsu\PCBuilder\dao\PCCaseDao.class
-by\fpmibsu\PCBuilder\controller\servlets\RegistrationServlet.class
 by\fpmibsu\PCBuilder\dao\UserDao.class
 by\fpmibsu\PCBuilder\dao\HDDDao.class
 by\fpmibsu\PCBuilder\entity\component\PCCase.class
@@ -24,6 +22,7 @@ by\fpmibsu\PCBuilder\dao\CPUDao.class
 by\fpmibsu\PCBuilder\service\RamService.class
 by\fpmibsu\PCBuilder\dao\PCDaoI.class
 by\fpmibsu\PCBuilder\runner\Runner.class
+by\fpmibsu\PCBuilder\temp\UserController1.class
 by\fpmibsu\PCBuilder\dao\SSDDao.class
 by\fpmibsu\PCBuilder\entity\component\Cooler.class
 by\fpmibsu\PCBuilder\service\ComponentServiceI.class
@@ -37,8 +36,8 @@ by\fpmibsu\PCBuilder\service\MotherboardService.class
 by\fpmibsu\PCBuilder\dao\PowerSupplyDao.class
 by\fpmibsu\PCBuilder\entity\component\CPU.class
 by\fpmibsu\PCBuilder\service\CoolerService.class
-by\fpmibsu\PCBuilder\controller\servlets\UserServlet.class
 by\fpmibsu\PCBuilder\service\PCService.class
+by\fpmibsu\PCBuilder\temp\SwaggerConfig.class
 by\fpmibsu\PCBuilder\service\CPUService.class
 by\fpmibsu\PCBuilder\entity\component\RAM.class
 by\fpmibsu\PCBuilder\service\PowerSupplyService.class

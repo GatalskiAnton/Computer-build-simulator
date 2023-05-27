@@ -34,6 +34,18 @@ public class PC {
         this.gpu = gpu;
     }
 
+    public PC() {
+        this.PCCase = null;
+        this.cooler = null;
+        this.cpu = null;
+        this.ssd = null;
+        this.hdd = null;
+        this.ram = null;
+        this.motherboard = null;
+        this.powerSupply = null;
+        this.gpu = null;
+    }
+
     public PCCase getPCCase() {
         return PCCase;
     }
@@ -114,16 +126,12 @@ public class PC {
         this.id = id;
     }
 
-    public PC() {
-
-    }
-
     public int getUserId() {
         return userId;
     }
 
     public void setUserId(int userId) {
-        userId = userId;
+        this.userId = userId;
     }
 
     @Override

@@ -20,14 +20,12 @@ public class UserService implements UserServiceI {
     public boolean isCorrectUser(String login, String password) throws DaoException, GoogleException {
         UserDao userDao = new UserDao();
         User user = userDao.findUserByLogin(login);
-        System.out.println(user);
         if(user == null || user.getLogin() == null) {
             return false;
         }
         if (user.isFromGoogle()) {
             throw new GoogleException("Login using google account.");
         }
-        System.out.println(Authentication.isCorrectPassword(password, user.getHashPassword()));
         return Authentication.isCorrectPassword(password, user.getHashPassword());
     }
 
@@ -58,7 +56,7 @@ public class UserService implements UserServiceI {
         User newUser = new User();
         newUser.setFromGoogle(true);
         newUser.setLogin(login);
-        newUser.setHashPassword(null);
+        newUser.setHashPassword("");
         newUser.setAdmin(false);
         newUser.setEmail(login);
         return userDao.insertByLogin(newUser) != 0;

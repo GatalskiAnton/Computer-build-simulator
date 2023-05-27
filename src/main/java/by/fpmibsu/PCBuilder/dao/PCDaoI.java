@@ -10,7 +10,7 @@ public interface PCDaoI <K,PC extends by.fpmibsu.PCBuilder.entity.PC>{
     PC update(PC pc) throws DaoException;
     boolean delete(PC pc) throws DaoException;
     boolean delete(K id) throws DaoException;
-    int insert(PC pc);
+    int insert(PC pc) throws DaoException;
     default void close(Connection connection) throws DaoException{
         try {
             if (connection != null)
@@ -19,4 +19,5 @@ public interface PCDaoI <K,PC extends by.fpmibsu.PCBuilder.entity.PC>{
             e.printStackTrace();
         }
     }
+    int insertEmpty(PC pc) throws DaoException;
 }

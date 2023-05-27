@@ -1,5 +1,6 @@
 package by.fpmibsu.PCBuilder.controller.servlets;
 
+import by.fpmibsu.PCBuilder.action.Action;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
@@ -12,26 +13,15 @@ import java.io.IOException;
 public class MainServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doPost(request,response);
+        System.out.println("hello");
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String requestType = request.getHeader("requestType");
-        switch (requestType) {
-            case "userRequest": {
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/UserServlet");
-                dispatcher.forward(request, response);
-                break;
-            }
-            case "componentRequest": {
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/ComponentServlet");
-                dispatcher.forward(request, response);
-                break;
-            }
-            case "pcRequest":
-                response.sendRedirect("http://localhost:9090/PCBuilder_war_exploded/PCServlet");
-                break;
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {;
+        Action action = (Action) request.getAttribute("action");
+        if(action == null) {
+            return;
         }
+        action.doAction();
     }
 }

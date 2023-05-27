@@ -1,5 +1,6 @@
 package by.fpmibsu.PCBuilder.dao;
 
+import by.fpmibsu.PCBuilder.entity.PC;
 import by.fpmibsu.PCBuilder.entity.User;
 
 import java.sql.Connection;
@@ -29,4 +30,6 @@ public interface UserDaoI<K, U extends User> {
     }
 
     int insertByLogin(U user) throws DaoException;
+
+    int getPcById(K id) throws  DaoException;
 }

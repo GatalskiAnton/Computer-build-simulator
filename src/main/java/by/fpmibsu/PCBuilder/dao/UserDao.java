@@ -2,6 +2,7 @@ package by.fpmibsu.PCBuilder.dao;
 
 import by.fpmibsu.PCBuilder.db.ConnectionCreator;
 import by.fpmibsu.PCBuilder.entity.*;
+import javassist.bytecode.LineNumberAttribute;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -26,6 +27,9 @@ public class UserDao implements UserDaoI<Integer, User> {
     private static final String SQL_SELECT_USER_BY_LOGIN_AND_HASHPASSWORD = "SELECT * FROM users WHERE login = ? AND password = ?";
 
     private static final String SQL_INSERT_BY_LOGIN = "INSERT INTO users(login, fromGoogle) VALUES(?,?)";
+
+    private static final String SQL_GET_PC_BY_ID = "SELECT id FROM pc WHERE userId = ?";
+
 
     @Override
     public List<User> findAll() throws DaoException {
@@ -169,10 +173,14 @@ public class UserDao implements UserDaoI<Integer, User> {
         Connection connection = null;
         PreparedStatement statement = null;
         try {
+            System.out.println(user.getHashPassword());
             connection = ConnectionCreator.createConnection();
-            statement = connection.prepareStatement(SQL_INSERT_BY_LOGIN);
-            statement.setString(1, user.getLogin());
-            statement.setBoolean(2, user.isFromGoogle());
+            statement = connection.prepareStatement(SQL_INSERT_USERS);
+            statement.setString(1, user.getEmail());
+            statement.setString(2, user.getHashPassword());
+            statement.setBoolean(3, false);
+            statement.setString(4, user.getEmail());
+            statement.setBoolean(5, true);
             rowsUpdate = statement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -181,6 +189,31 @@ public class UserDao implements UserDaoI<Integer, User> {
         }
 
         return rowsUpdate;
+    }
+
+    @Override
+    public int getPcById(Integer id) throws DaoException {
+        Connection connection;
+        PreparedStatement statement;
+        ResultSet resultSet;
+        try {
+            connection = ConnectionCreator.createConnection();
+            statement = connection.prepareStatement(SQL_GET_PC_BY_ID);
+            statement.setInt(1, id);
+            resultSet = statement.executeQuery();
+            if (!resultSet.next()) {
+                PC pc = new PC();
+                PCDao dao = new PCDao();
+                pc.setUserId(id);
+                dao.insertEmpty(pc);
+                return getPcById(id);
+            }
+            else {
+                return resultSet.getInt("id");
+            }
+        } catch (SQLException e) {
+            return -1;
+        }
     }
 
     public User findUserByLogin(String login) throws DaoException {
