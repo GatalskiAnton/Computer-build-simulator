@@ -1,5 +1,6 @@
 package by.fpmibsu.PCBuilder.action.component;
 
+import by.fpmibsu.PCBuilder.action.ActionError;
 import by.fpmibsu.PCBuilder.dao.DaoException;
 import by.fpmibsu.PCBuilder.entity.PC;
 import by.fpmibsu.PCBuilder.entity.component.Component;
@@ -17,7 +18,12 @@ public class SelectComponentAction extends ComponentAction{
     @Override
     public void doAction() {
         Component component = componentService.getComponentById(reqData.get("componentId").getAsInt());
+        if(component.getId() == 0) {
+            ActionError.sendError(res, "invalidComponentId");
+        }
         PC pc = new PCService().getPc(reqData.get("login").getAsString());
-        componentService.selectComponent(pc.getId(), component);
+        if(!componentService.selectComponent(pc.getId(), component)) {
+            ActionError.sendError(res, "selectError");
+        }
     }
 }

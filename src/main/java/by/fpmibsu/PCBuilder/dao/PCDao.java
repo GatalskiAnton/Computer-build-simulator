@@ -4,6 +4,7 @@ import by.fpmibsu.PCBuilder.db.ConnectionCreator;
 import by.fpmibsu.PCBuilder.entity.*;
 import by.fpmibsu.PCBuilder.entity.component.Cooler;
 
+import java.lang.reflect.Type;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,8 +14,7 @@ public class PCDao implements PCDaoI<Integer, PC> {
     private static final String SQL_SELECT_ALL_PC = "SELECT * FROM pc";
     private static final String SQL_SELECT_PC_BY_ID = "SELECT * FROM pc WHERE id = ?";
 
-    private static final String SQL_UPDATE_PC = "UPDATE pc SET id = ?, userId = ?, powersupplyId = ?, ssdId = ?, hddId = ?," +
-            " pccaseId = ?, motherboardId = ?, gpuId = ?, cpuId = ?, coolerId = ?, ramId = ? WHERE id = ?";
+    private static final String SQL_UPDATE_PC = "UPDATE pc SET id = ?, userId = ?, powersupplyId = ?, ssdId = ?, hddId = ?,pccaseId = ?, motherboardId = ?, gpuId = ?, cpuId = ?, coolerId = ?, ramId = ? WHERE id = ?";
 
     private static final String SQl_DELETE_PC_BY_ID = "DELETE FROM pc WHERE id = ?";
 
@@ -106,16 +106,68 @@ public class PCDao implements PCDaoI<Integer, PC> {
 
     private static void fillStatement(PC pc, PreparedStatement statement) throws SQLException {
         statement.setInt(1, pc.getId());
-        statement.setInt(2, pc.getUserId());
-        statement.setInt(3, pc.getPowerSupply() != null ? pc.getPowerSupply().getId(): null);
-        statement.setInt(4, pc.getSsd() != null ? pc.getSsd().getId(): null);
-        statement.setInt(5, pc.getHdd() != null ? pc.getHdd().getId(): null);
-        statement.setInt(6, pc.getPCCase() != null ? pc.getPCCase().getId(): null);
-        statement.setInt(7, pc.getMotherboard() != null ? pc.getMotherboard().getId(): null);
-        statement.setInt(8, pc.getGpu() != null ? pc.getGpu().getId(): null);
-        statement.setInt(9, pc.getCpu() != null ? pc.getCpu().getId(): null);
-        statement.setInt(10, pc.getCooler() != null ? pc.getCooler().getId(): null);
-        statement.setInt(11, pc.getRam() != null ? pc.getRam().getId(): null);
+        if (pc.getUserId() == 0) {
+            statement.setNull(2, Types.INTEGER);
+        } else {
+            statement.setInt(2, pc.getUserId());
+        }
+        if(pc.getPowerSupply() == null || pc.getPowerSupply().getId() == 0) {
+            statement.setNull(3, Types.INTEGER);
+        }
+        else {
+            statement.setInt(3,pc.getPowerSupply().getId());
+        }
+        if(pc.getSsd() == null || pc.getSsd().getId() == 0) {
+            statement.setNull(4, Types.INTEGER);
+        }
+        else {
+            statement.setInt(4, pc.getSsd().getId());
+        }
+        if(pc.getHdd() == null || pc.getHdd().getId() == 0) {
+            statement.setNull(5, Types.INTEGER);
+        }
+        else {
+            statement.setInt(5, pc.getHdd().getId());
+        }
+        if(pc.getPCCase() == null || pc.getPCCase().getId() == 0) {
+            statement.setNull(6, Types.INTEGER);
+        }
+        else {
+            statement.setInt(6, pc.getPCCase().getId());
+        }
+        if(pc.getMotherboard() == null || pc.getMotherboard().getId() == 0) {
+            statement.setNull(7, Types.INTEGER);
+        }
+        else {
+            statement.setInt(7, pc.getMotherboard().getId());
+        }
+        if(pc.getGpu() == null || pc.getGpu().getId() == 0) {
+            statement.setNull(8, Types.INTEGER);
+        }
+        else {
+            statement.setInt(8, pc.getGpu().getId());
+        }
+        if( pc.getCpu() == null || pc.getCpu().getId() == 0) {
+
+            statement.setNull(9, Types.INTEGER);
+        }
+        else {
+            statement.setInt(9,pc.getCpu().getId());
+        }
+        if( pc.getCooler() == null || pc.getCooler().getId() == 0) {
+
+            statement.setNull(10, Types.INTEGER);
+        }
+        else {
+            statement.setInt(10,pc.getCooler().getId());
+        }
+        if( pc.getRam() == null || pc.getRam().getId() == 0) {
+
+            statement.setNull(11, Types.INTEGER);
+        }
+        else {
+            statement.setInt(11,pc.getRam().getId());
+        }
     }
 
     @Override
