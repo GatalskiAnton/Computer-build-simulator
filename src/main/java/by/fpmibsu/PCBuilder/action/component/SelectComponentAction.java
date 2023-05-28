@@ -17,6 +17,10 @@ public class SelectComponentAction extends ComponentAction{
 
     @Override
     public void doAction() {
+        if(guest) {
+            ActionError.sendError(res, "guest");
+            return;
+        }
         Component component = componentService.getComponentById(reqData.get("componentId").getAsInt());
         if(component.getId() == 0) {
             ActionError.sendError(res, "invalidComponentId");

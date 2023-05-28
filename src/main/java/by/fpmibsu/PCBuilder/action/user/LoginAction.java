@@ -1,6 +1,7 @@
 package by.fpmibsu.PCBuilder.action.user;
 import by.fpmibsu.PCBuilder.action.ActionError;
 import by.fpmibsu.PCBuilder.dao.DaoException;
+import by.fpmibsu.PCBuilder.entity.component.utils.Authentication;
 import org.jetbrains.annotations.NotNull;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,6 +13,9 @@ public class LoginAction extends UserAction{
     }
     @Override
     public void doAction() {
+        if(guest) {
+            ActionError.sendError(res, "guest");
+        }
         String login = reqData.get("login").getAsString();
         String password = reqData.get("password").getAsString();
         boolean fromGoogleAcc = reqData.get("googleAccount").getAsBoolean();
@@ -30,7 +34,7 @@ public class LoginAction extends UserAction{
         try {
             if (!service.isCorrectUser(login, password)) {
                 if(service.isExist(login)) {
-
+                    System.out.println(321312312);
                     ActionError.sendError(res, "incorrectPassword");
                 }
                 else {

@@ -42,6 +42,7 @@ public class PCCaseDao implements ComponentDaoI<Integer, PCCase> {
                 pcCase.setName(resultSet.getString("name"));
                 pcCase.setBrand(resultSet.getString("brand"));
                 pcCase.setColor(Color.valueOf(resultSet.getString("color")));
+                cases.add(pcCase);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

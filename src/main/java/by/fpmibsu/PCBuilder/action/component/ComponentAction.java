@@ -36,6 +36,9 @@ public abstract class ComponentAction extends Action {
             ActionError.sendError(res, "noSuchComponent");
             return;
         }
+        if(reqData.get("login").getAsString().equals("guest")) {
+            return;
+        }
         PCService service = new PCService();
         currentPc = service.getPc(reqData.get("login").getAsString());
     }

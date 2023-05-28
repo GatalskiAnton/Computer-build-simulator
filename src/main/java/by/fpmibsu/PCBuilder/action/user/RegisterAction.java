@@ -14,6 +14,9 @@ public class RegisterAction extends UserAction{
     }
     @Override
     public void doAction() {
+        if(guest) {
+            ActionError.sendError(res, "guest");
+        }
         String login = reqData.get("login").getAsString();
         String password = reqData.get("password").getAsString();
         boolean fromGoogleAcc = reqData.get("googleAccount").getAsBoolean();

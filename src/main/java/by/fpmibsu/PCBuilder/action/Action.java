@@ -19,6 +19,7 @@ public abstract class  Action {
     protected  HttpServletRequest req;
     protected HttpServletResponse res;
 
+    protected boolean guest = false;
     protected  Action(@NotNull HttpServletRequest req, @NotNull HttpServletResponse res) throws DaoException {
         this.req = req;
         this.res = res;
@@ -32,13 +33,18 @@ public abstract class  Action {
         Gson gson = new Gson();
         reqData = gson.fromJson(json, JsonObject.class);
         UserService service = new UserService();
-        User user = service.getUser(reqData.get("login").getAsString());
-        if(user == null) {
-            ActionError.sendError(res, "noConnection");
-            throw new DaoException("no connection");
+        if(reqData.get("login").getAsString().equals("guest")) {
+            guest = true;
         }
         else {
-            userId = service.getUser(reqData.get("login").getAsString()).getId();
+            User user = service.getUser(reqData.get("login").getAsString());
+            if(user == null) {
+                ActionError.sendError(res, "noConnection");
+                throw new DaoException("no connection");
+            }
+            else {
+                userId = service.getUser(reqData.get("login").getAsString()).getId();
+            }
         }
     }
     public abstract void doAction();

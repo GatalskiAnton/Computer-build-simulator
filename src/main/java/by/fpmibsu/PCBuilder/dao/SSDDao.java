@@ -40,6 +40,7 @@ public class SSDDao implements ComponentDaoI<Integer, SSD> {
                 ssd.setName(resultSet.getString("name"));
                 ssd.setBrand(resultSet.getString("brand"));
                 ssd.setCapacity(resultSet.getInt("capacity"));
+                ssds.add(ssd);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

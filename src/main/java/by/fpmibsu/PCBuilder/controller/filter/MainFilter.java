@@ -1,8 +1,8 @@
 package by.fpmibsu.PCBuilder.controller.filter;
 
 import by.fpmibsu.PCBuilder.action.Action;
-import by.fpmibsu.PCBuilder.action.ActionError;
 import by.fpmibsu.PCBuilder.action.component.GetAllAction;
+import by.fpmibsu.PCBuilder.action.component.GetInfoAction;
 import by.fpmibsu.PCBuilder.action.component.SelectComponentAction;
 import by.fpmibsu.PCBuilder.action.user.ChangePasswordAction;
 import by.fpmibsu.PCBuilder.action.user.LoginAction;
@@ -12,7 +12,6 @@ import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Map;
 
 public class MainFilter implements javax.servlet.Filter {
     @Override
@@ -36,6 +35,7 @@ public class MainFilter implements javax.servlet.Filter {
                     action = new RegisterAction(req,res);
                 }
                 case "user/changePassword" -> {
+                    System.out.println(12321321);
                     action = new ChangePasswordAction(req,res);
                 }
                 case "component/getAll" -> {
@@ -43,6 +43,9 @@ public class MainFilter implements javax.servlet.Filter {
                 }
                 case "component/select" -> {
                     action = new SelectComponentAction(req, res);
+                }
+                case "component/getInfo" -> {
+                    action = new GetInfoAction(req, res);
                 }
             }
             if(action == null) {

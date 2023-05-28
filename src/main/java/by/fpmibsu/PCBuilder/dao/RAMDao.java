@@ -12,15 +12,15 @@ public class RAMDao implements ComponentDaoI<Integer, RAM> {
 
     private static final String SQL_SELECT_ALL_RAM = "SELECT * FROM ram";
 
-    private static final String SQL_SELECT_RAM_BY_ID = "SELECT * FROM powersuply WHERE id = ?";
+    private static final String SQL_SELECT_RAM_BY_ID = "SELECT * FROM ram WHERE id = ?";
 
-    private static final String SQL_UPDATE_RAM = "UPDATE powersuply SET id = ?, price = ?, name = ?, brand = ?, speed = ?, memoryType = ? WHERE id = ?";
+    private static final String SQL_UPDATE_RAM = "UPDATE ram SET id = ?, price = ?, name = ?, brand = ?, speed = ?, memoryType = ? WHERE id = ?";
 
-    private static final String SQl_DELETE_RAM_BY_ID = "DELETE FROM powersuply WHERE id = ?";
+    private static final String SQl_DELETE_RAM_BY_ID = "DELETE FROM ram WHERE id = ?";
 
-    private static final String SQL_DELETE_RAM = "DELETE FROM powersuply WHERE id = ?, price = ?, name = ?, brand = ?, speed = ?, memoryType = ?";
+    private static final String SQL_DELETE_RAM = "DELETE FROM ram WHERE id = ?, price = ?, name = ?, brand = ?, speed = ?, memoryType = ?";
 
-    private static final String SQL_INSERT_RAM = "INSERT INTO powersuply(id, price, name, brand, speed, memoryType) VALUES (?,?,?,?,?,?)";
+    private static final String SQL_INSERT_RAM = "INSERT INTO ram(id, price, name, brand, speed, memoryType) VALUES (?,?,?,?,?,?)";
 
     @Override
     public List<RAM> findAll() throws DaoException {
@@ -39,6 +39,7 @@ public class RAMDao implements ComponentDaoI<Integer, RAM> {
                 ram.setBrand(resultSet.getString("brand"));
                 ram.setSpeed(resultSet.getInt("speed"));
                 ram.setMemoryType(MemoryType.valueOf(resultSet.getString("memoryType")));
+                rams.add(ram);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
