@@ -1,5 +1,7 @@
 package by.fpmibsu.PCBuilder.entity.component;
 
+import java.util.Objects;
+
 public class PowerSupply extends Component{
 
     private int power;
@@ -14,6 +16,14 @@ public class PowerSupply extends Component{
 
     public void setPower(int power) {
         this.power = power;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        PowerSupply that = (PowerSupply) o;
+        return power == that.power;
     }
 
     public PowerSupply(){

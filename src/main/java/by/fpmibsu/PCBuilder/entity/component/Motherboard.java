@@ -2,6 +2,8 @@ package by.fpmibsu.PCBuilder.entity.component;
 
 import by.fpmibsu.PCBuilder.entity.component.utils.Socket;
 
+import java.util.Objects;
+
 public class Motherboard extends Component{
     private Socket socket;
 
@@ -27,5 +29,13 @@ public class Motherboard extends Component{
         return "Motherboard{"+ super.toString() + ", " +
                 "socket=" + socket +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Motherboard that = (Motherboard) o;
+        return socket == that.socket;
     }
 }

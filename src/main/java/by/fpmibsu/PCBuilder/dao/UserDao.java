@@ -236,9 +236,10 @@ public class UserDao implements UserDaoI<Integer, User> {
                 user.setLogin(resultSet.getString("login"));
                 user.setHashPassword(resultSet.getString("password"));
                 user.setAdmin(resultSet.getInt("admin") != 0);
+                user.setEmail(resultSet.getString("email"));
             }
         } catch (SQLException e) {
-           throw new RuntimeException();
+            throw new RuntimeException();
         } finally {
             close(connection);
         }

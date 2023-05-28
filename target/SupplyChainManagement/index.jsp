@@ -16,13 +16,15 @@
     <button onclick="myfunc1()">press2</button>
 <script>
     async function myfunc1() {
-        const response = await fetch("http://localhost:9090/PCBuilder_war_exploded/UserServlet",
+        const response = await fetch("http://localhost:9090/PCBuilder_war_exploded/da/da/da",
             {
+                mode: 'cors',
                 method: "POST",
                 headers: {
                     Accept: "application/json",
                     "Content-Type": "application/json",
                     requestType: "componentRequest",
+                    'Access-Control-Allow-Origin': '*',
                 },
                 body: JSON.stringify({
                     "operation": 'changePass',
@@ -30,7 +32,7 @@
                     "newPassword": 'qwerty1',
                 })
             }).then(response => {
-            if(!response.ok) {
+            if (!response.ok) {
                 console.log(response.status);
                 console.log(response);
                 console.log(response.headers.get("errorType"))

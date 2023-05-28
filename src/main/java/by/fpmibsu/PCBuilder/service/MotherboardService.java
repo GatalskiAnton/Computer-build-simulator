@@ -6,17 +6,27 @@ import by.fpmibsu.PCBuilder.entity.component.CPU;
 import by.fpmibsu.PCBuilder.entity.component.HDD;
 import by.fpmibsu.PCBuilder.entity.component.Motherboard;
 import by.fpmibsu.PCBuilder.entity.component.utils.Socket;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MotherboardService<Motherboard> implements ComponentServiceI<by.fpmibsu.PCBuilder.entity.component.Motherboard> {
+    private static Logger log = LogManager.getLogger(MotherboardService.class);
+
     @Override
     public List<by.fpmibsu.PCBuilder.entity.component.Motherboard> getAllComponents() throws DaoException {
+        log.info("MotherboardService calling getAllComponents");
         MotherboardDao motherboardDao = new MotherboardDao();
-        return motherboardDao.findAll();
-    }
 
+        try {
+            return motherboardDao.findAll();
+        } catch (DaoException e) {
+            log.error(e);
+            return null;
+        }
+    }
     @Override
     public boolean selectComponent(int pcId, by.fpmibsu.PCBuilder.entity.component.Motherboard component) {
         PCDao dao = new PCDao();
@@ -41,7 +51,14 @@ public class MotherboardService<Motherboard> implements ComponentServiceI<by.fpm
     }
 
     public List<by.fpmibsu.PCBuilder.entity.component.Motherboard> getMotherboardsBySocket(Socket socket) throws DaoException {
+        log.info("MotherboardService calling getAllComponents");
         MotherboardDao motherboardDao = new MotherboardDao();
-        return motherboardDao.findComponentBySocket(socket);
+
+        try {
+            return motherboardDao.findComponentBySocket(socket);
+        } catch (DaoException e) {
+            log.error(e);
+            return null;
+        }
     }
 }

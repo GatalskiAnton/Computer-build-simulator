@@ -31,7 +31,7 @@ public class PCService implements PCServiceI {
     public PC getPC(int pcId) {
         PCDao pcDao = new PCDao();
         try {
-             return pcDao.findPCById(pcId);
+            return pcDao.findPCById(pcId);
         } catch (DaoException e) {
             return null;
         }

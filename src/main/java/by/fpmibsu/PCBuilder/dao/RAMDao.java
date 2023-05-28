@@ -31,7 +31,7 @@ public class RAMDao implements ComponentDaoI<Integer, RAM> {
             connection = ConnectionCreator.createConnection();
             statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(SQL_SELECT_ALL_RAM);
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 RAM ram = new RAM();
                 ram.setId(resultSet.getInt("id"));
                 ram.setPrice(resultSet.getInt("price"));
@@ -59,7 +59,7 @@ public class RAMDao implements ComponentDaoI<Integer, RAM> {
             statement = connection.prepareStatement(SQL_SELECT_RAM_BY_ID);
             statement.setInt(1, id);
             ResultSet resultSet = statement.executeQuery();
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 ram.setId(resultSet.getInt("id"));
                 ram.setPrice(resultSet.getInt("price"));
                 ram.setName(resultSet.getString("name"));
@@ -83,11 +83,11 @@ public class RAMDao implements ComponentDaoI<Integer, RAM> {
             connection = ConnectionCreator.createConnection();
             statement = connection.prepareStatement(SQL_UPDATE_RAM);
             statement.setInt(1, ram.getId());
-            statement.setInt(2,ram.getPrice());
-            statement.setString(3,ram.getName());
-            statement.setString(4,ram.getBrand());
-            statement.setInt(5,ram.getSpeed());
-            statement.setString(6,ram.getMemoryType().toString());
+            statement.setInt(2, ram.getPrice());
+            statement.setString(3, ram.getName());
+            statement.setString(4, ram.getBrand());
+            statement.setInt(5, ram.getSpeed());
+            statement.setString(6, ram.getMemoryType().toString());
             statement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -141,7 +141,7 @@ public class RAMDao implements ComponentDaoI<Integer, RAM> {
     }
 
     @Override
-    public int insert(RAM ram) throws DaoException{
+    public int insert(RAM ram) throws DaoException {
         int rowsUpdate;
         Connection connection = null;
         PreparedStatement statement = null;

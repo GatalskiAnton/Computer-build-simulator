@@ -8,15 +8,26 @@ import by.fpmibsu.PCBuilder.entity.PC;
 import by.fpmibsu.PCBuilder.entity.component.CPU;
 import by.fpmibsu.PCBuilder.entity.component.Component;
 import by.fpmibsu.PCBuilder.entity.component.GPU;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class GPUService<GPU> implements ComponentServiceI<by.fpmibsu.PCBuilder.entity.component.GPU> {
+    private static Logger log = LogManager.getLogger(GPUService.class);
+
     @Override
     public List<by.fpmibsu.PCBuilder.entity.component.GPU> getAllComponents() throws DaoException {
+        log.info("GPUService calling getAllComponents");
         GPUDao gpuDao = new GPUDao();
-        return gpuDao.findAll();
+
+        try {
+            return gpuDao.findAll();
+        } catch (DaoException e) {
+            log.error(e);
+            return null;
+        }
     }
 
     @Override

@@ -1,5 +1,7 @@
 package by.fpmibsu.PCBuilder.entity;
 
+import java.util.Objects;
+
 public class User {
     private int id;
     private boolean admin;
@@ -9,6 +11,14 @@ public class User {
     private String email;
 
     private boolean fromGoogle;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return id == user.id && admin == user.admin && fromGoogle == user.fromGoogle && Objects.equals(login, user.login) && Objects.equals(hashPassword, user.hashPassword) && Objects.equals(email, user.email);
+    }
 
     public int getId() {
         return id;

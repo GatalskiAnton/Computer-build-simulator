@@ -6,17 +6,27 @@ import by.fpmibsu.PCBuilder.dao.RAMDao;
 import by.fpmibsu.PCBuilder.dao.SSDDao;
 import by.fpmibsu.PCBuilder.entity.PC;
 import by.fpmibsu.PCBuilder.entity.component.SSD;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class SSDService<SSD> implements ComponentServiceI<by.fpmibsu.PCBuilder.entity.component.SSD> {
+    private static Logger log = LogManager.getLogger(SSDService.class);
+
     @Override
     public List<by.fpmibsu.PCBuilder.entity.component.SSD> getAllComponents() throws DaoException {
+        log.info("PCCaseService calling getAllComponents");
         SSDDao ssdDao = new SSDDao();
-        return ssdDao.findAll();
-    }
 
+        try {
+            return ssdDao.findAll();
+        } catch (DaoException e) {
+            log.error(e);
+            return null;
+        }
+    }
     @Override
     public boolean selectComponent(int pcId, by.fpmibsu.PCBuilder.entity.component.SSD component) {
         PCDao dao = new PCDao();

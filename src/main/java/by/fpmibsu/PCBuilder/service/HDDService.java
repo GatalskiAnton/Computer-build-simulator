@@ -6,15 +6,26 @@ import by.fpmibsu.PCBuilder.dao.HDDDao;
 import by.fpmibsu.PCBuilder.dao.PCDao;
 import by.fpmibsu.PCBuilder.entity.PC;
 import by.fpmibsu.PCBuilder.entity.component.HDD;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class HDDService<HDD> implements ComponentServiceI<by.fpmibsu.PCBuilder.entity.component.HDD> {
+    private static Logger log = LogManager.getLogger(HDDService.class);
+
     @Override
     public List<by.fpmibsu.PCBuilder.entity.component.HDD> getAllComponents() throws DaoException {
+        log.info("HDDService calling getAllComponents");
         HDDDao hddDao = new HDDDao();
-        return hddDao.findAll();
+
+        try {
+            return hddDao.findAll();
+        } catch (DaoException e) {
+            log.error(e);
+            return null;
+        }
     }
 
     @Override

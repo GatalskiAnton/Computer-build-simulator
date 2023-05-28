@@ -6,14 +6,24 @@ import by.fpmibsu.PCBuilder.dao.PCDao;
 import by.fpmibsu.PCBuilder.entity.PC;
 import by.fpmibsu.PCBuilder.entity.component.Cooler;
 import by.fpmibsu.PCBuilder.entity.component.utils.Socket;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.List;
 
 public class CoolerService<Cooler> implements ComponentServiceI<by.fpmibsu.PCBuilder.entity.component.Cooler> {
+    private static Logger log = LogManager.getLogger(CoolerService.class);
+
     @Override
     public List<by.fpmibsu.PCBuilder.entity.component.Cooler> getAllComponents() throws DaoException {
+        log.info("CoolerService calling getAllComponents");
         CoolerDao coolerDao = new CoolerDao();
-        return coolerDao.findAll();
+        try {
+            return coolerDao.findAll();
+        } catch (DaoException e) {
+            log.error(e);
+            return null;
+        }
     }
 
     @Override
@@ -40,12 +50,24 @@ public class CoolerService<Cooler> implements ComponentServiceI<by.fpmibsu.PCBui
     }
 
     public List<by.fpmibsu.PCBuilder.entity.component.Cooler> getCoolersBySocket(Socket socket) throws DaoException {
+        log.info("CoolerService calling getCoolersBySocket");
         CoolerDao coolerDao = new CoolerDao();
-        return coolerDao.findComponentBySocket(socket);
+        try {
+            return coolerDao.findComponentBySocket(socket);
+        } catch (DaoException e) {
+            log.error(e);
+            return null;
+        }
     }
 
     public List<by.fpmibsu.PCBuilder.entity.component.Cooler> getCoolersByTDP(int TDP) throws DaoException {
+        log.info("CoolerService calling getCoolersByTDP");
         CoolerDao coolerDao = new CoolerDao();
-        return coolerDao.findComponentByTDP(TDP);
+        try {
+            return coolerDao.findComponentByTDP(TDP);
+        } catch (DaoException e) {
+            log.error(e);
+            return null;
+        }
     }
 }

@@ -6,15 +6,26 @@ import by.fpmibsu.PCBuilder.dao.PCDao;
 import by.fpmibsu.PCBuilder.dao.PowerSupplyDao;
 import by.fpmibsu.PCBuilder.entity.PC;
 import by.fpmibsu.PCBuilder.entity.component.PowerSupply;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class PowerSupplyService<PowerSupply> implements ComponentServiceI<by.fpmibsu.PCBuilder.entity.component.PowerSupply> {
+    private static Logger log = LogManager.getLogger(PowerSupplyService.class);
+
     @Override
     public List<by.fpmibsu.PCBuilder.entity.component.PowerSupply> getAllComponents() throws DaoException {
+        log.info("PCCaseService calling getAllComponents");
         PowerSupplyDao powerSupplyDao = new PowerSupplyDao();
-        return powerSupplyDao.findAll();
+
+        try {
+            return powerSupplyDao.findAll();
+        } catch (DaoException e) {
+            log.error(e);
+            return null;
+        }
     }
 
     @Override

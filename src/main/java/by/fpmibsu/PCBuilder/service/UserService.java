@@ -5,10 +5,13 @@ import by.fpmibsu.PCBuilder.dao.UserDao;
 import by.fpmibsu.PCBuilder.entity.User;
 import by.fpmibsu.PCBuilder.entity.component.utils.Authentication;
 import by.fpmibsu.PCBuilder.service.utils.GoogleException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.sql.Connection;
 
 public class UserService implements UserServiceI {
+    private static Logger log = LogManager.getLogger(UserService.class);
 
     @Override
     public boolean isExist(String login) throws DaoException {

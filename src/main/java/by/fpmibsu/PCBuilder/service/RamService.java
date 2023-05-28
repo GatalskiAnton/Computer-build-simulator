@@ -6,15 +6,26 @@ import by.fpmibsu.PCBuilder.dao.PowerSupplyDao;
 import by.fpmibsu.PCBuilder.dao.RAMDao;
 import by.fpmibsu.PCBuilder.entity.PC;
 import by.fpmibsu.PCBuilder.entity.component.RAM;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class RamService<RAM> implements ComponentServiceI<by.fpmibsu.PCBuilder.entity.component.RAM> {
+    private static Logger log = LogManager.getLogger(RamService.class);
+
     @Override
     public List<by.fpmibsu.PCBuilder.entity.component.RAM> getAllComponents() throws DaoException {
+        log.info("RamService calling getAllComponents");
         RAMDao ramDao = new RAMDao();
-        return ramDao.findAll();
+
+        try {
+            return ramDao.findAll();
+        } catch (DaoException e) {
+            log.error(e);
+            return null;
+        }
     }
 
     @Override

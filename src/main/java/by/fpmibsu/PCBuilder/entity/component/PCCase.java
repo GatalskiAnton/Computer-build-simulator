@@ -2,6 +2,8 @@ package by.fpmibsu.PCBuilder.entity.component;
 
 import by.fpmibsu.PCBuilder.entity.component.utils.Color;
 
+import java.util.Objects;
+
 public class PCCase extends Component{
 
     private Color color;
@@ -28,6 +30,14 @@ public class PCCase extends Component{
         return "PCCase{" + super.toString() + ", " +
                 "color=" + color +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        PCCase pcCase = (PCCase) o;
+        return color == pcCase.color;
     }
 }
 
