@@ -15,14 +15,26 @@ public class UserService implements UserServiceI {
 
     @Override
     public boolean isExist(String login) throws DaoException {
+        log.info("UserService calling isExist");
         UserDao userDao = new UserDao();
-        return userDao.findUserByLogin(login).getLogin() != null;
+        try{
+            return userDao.findUserByLogin(login).getLogin() != null;
+        }catch (DaoException e){
+            log.error(e);
+            return false;
+        }
     }
 
     @Override
     public boolean isCorrectUser(String login, String password) throws DaoException, GoogleException {
         UserDao userDao = new UserDao();
-        User user = userDao.findUserByLogin(login);
+        User user = null;
+        try{
+            user = userDao.findUserByLogin(login);
+        }catch (DaoException e) {
+            log.error(e);
+            return false;
+        }
         if(user == null || user.getLogin() == null) {
             return false;
         }
@@ -36,8 +48,13 @@ public class UserService implements UserServiceI {
     public User changePassword(User user, String newPassword) throws DaoException {
         UserDao userDao = new UserDao();
         user.setHashPassword(Authentication.getHashPassword(newPassword));
-        User newUser = userDao.update(user);
-        return newUser;
+        try{
+            return userDao.update(user);
+        }
+        catch (DaoException e){
+            log.error(e);
+            return null ;
+        }
     }
 
     @Override
@@ -49,8 +66,12 @@ public class UserService implements UserServiceI {
         newUser.setEmail(login);
         newUser.setAdmin(false);
         newUser.setFromGoogle(fromGoogle);
-        int result = userDao.insert(newUser);
-        return result != 0;
+        try{
+            return  userDao.insert(newUser) != 0;
+        }catch (DaoException e){
+            log.error(e);
+            return  false;
+        }
     }
 
     @Override
@@ -62,7 +83,13 @@ public class UserService implements UserServiceI {
         newUser.setHashPassword("");
         newUser.setAdmin(false);
         newUser.setEmail(login);
-        return userDao.insertByLogin(newUser) != 0;
+        try{
+            return userDao.insertByLogin(newUser) != 0;
+        }
+        catch (DaoException e){
+            log.error(e);
+            return false;
+        }
     }
 
     @Override
@@ -71,6 +98,7 @@ public class UserService implements UserServiceI {
         try {
             return userDao.findUserByLogin(login);
         } catch (DaoException e) {
+            log.error(e);
             return null;
         }
     }
