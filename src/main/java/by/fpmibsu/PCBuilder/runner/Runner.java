@@ -2,18 +2,22 @@ package by.fpmibsu.PCBuilder.runner;
 
 import java.sql.*;
 
-import by.fpmibsu.PCBuilder.dao.CPUDao;
-import by.fpmibsu.PCBuilder.dao.CoolerDao;
 import by.fpmibsu.PCBuilder.dao.DaoException;
-import by.fpmibsu.PCBuilder.dao.UserDao;
-import by.fpmibsu.PCBuilder.entity.User;
-import by.fpmibsu.PCBuilder.entity.component.Cooler;
-import by.fpmibsu.PCBuilder.entity.component.utils.Authentication;
-import by.fpmibsu.PCBuilder.entity.component.utils.Socket;
+import by.fpmibsu.PCBuilder.dao.UserDaoImpl;
+import by.fpmibsu.PCBuilder.service.CoolerServiceImpl;
+import by.fpmibsu.PCBuilder.service.PCServiceImpl;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class Runner {
     public static void main(String[] args) throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException, DaoException {
-        UserDao userDao = new UserDao();
-        System.out.println(userDao.findUserByLogin("Eugene"));
+//        System.setProperty("log4j.configurationFile", ".\\src\\main\\resources\\log4j2.xml");
+        Logger log = LogManager.getLogger(CoolerServiceImpl.class);
+
+        log.error("error");
+
+
+        PCServiceImpl pcService = new PCServiceImpl();
+        System.out.println(pcService.getPc("svidevich@gmail.com"));
     }
 }

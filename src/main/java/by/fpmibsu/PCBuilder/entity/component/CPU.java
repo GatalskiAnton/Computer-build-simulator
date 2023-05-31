@@ -3,6 +3,7 @@ package by.fpmibsu.PCBuilder.entity.component;
 import by.fpmibsu.PCBuilder.entity.component.utils.Socket;
 
 import javax.swing.plaf.SeparatorUI;
+import java.util.Objects;
 
 public class CPU extends Component{
     private Socket socket;
@@ -10,12 +11,25 @@ public class CPU extends Component{
     private int clockSpeed;
     private int TDP;
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CPU cpu = (CPU) o;
+        return super.getId() == getId() && Objects.equals(super.getName(), getName()) && Objects.equals(super.getBrand(), getBrand()) && super.getPrice() == getPrice()  && core == cpu.core && clockSpeed == cpu.clockSpeed && TDP == cpu.TDP && socket == cpu.socket;
+    }
+
     public CPU(int id, int price, String name, String brand, int clockSpeed, Socket socket, int TDP, int core) {
         super(id, price, name, brand);
         this.socket = socket;
         this.core = core;
         this.clockSpeed = clockSpeed;
         this.TDP = TDP;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.getId(), super.getName(), super.getBrand(), super.getPrice(), socket, core, clockSpeed, TDP);
     }
 
     public Socket getSocket() {

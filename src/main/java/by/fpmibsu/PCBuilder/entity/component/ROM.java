@@ -1,5 +1,7 @@
 package by.fpmibsu.PCBuilder.entity.component;
 
+import java.util.Objects;
+
 public class ROM extends Component{
     private int capacity;
 
@@ -16,6 +18,19 @@ public class ROM extends Component{
         this.capacity = capacity;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ROM rom = (ROM) o;
+        return super.getId() == getId() && Objects.equals(super.getName(), getName()) && Objects.equals(super.getBrand(), getBrand()) && super.getPrice() == getPrice()  && capacity == rom.capacity;
+    }
+
     public ROM() {
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.getId(), super.getName(), super.getBrand(), super.getPrice(), capacity);
     }
 }

@@ -11,6 +11,10 @@
     <title>Title</title>
 </head>
 <body>
-    hello
+    <button onclick="myfunc1()">press</button>
+    <button onclick="myfunc1()">press2</button>
+<script>
+
+</script>
 </body>
 </html>

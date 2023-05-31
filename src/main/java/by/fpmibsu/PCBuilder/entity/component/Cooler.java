@@ -2,6 +2,8 @@ package by.fpmibsu.PCBuilder.entity.component;
 
 import by.fpmibsu.PCBuilder.entity.component.utils.Socket;
 
+import java.util.Objects;
+
 public class Cooler extends Component{
     private Socket socket;
     private int TDP;
@@ -49,6 +51,19 @@ public class Cooler extends Component{
                 ", TDP=" + TDP +
                 ", diameter=" + diameter +
                 '}';
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.getId(), super.getName(), super.getBrand(), super.getPrice(),socket, TDP, diameter);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Cooler cooler = (Cooler) o;
+        return super.getId() == getId() && Objects.equals(super.getName(), getName()) && Objects.equals(super.getBrand(), getBrand()) && super.getPrice() == getPrice()  && TDP == cooler.TDP && diameter == cooler.diameter && socket == cooler.socket;
     }
 }
 

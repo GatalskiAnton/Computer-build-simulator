@@ -1,5 +1,7 @@
 package by.fpmibsu.PCBuilder.entity;
 
+import java.util.Objects;
+
 public class User {
     private int id;
     private boolean admin;
@@ -39,7 +41,7 @@ public class User {
 
     @Override
     public String toString() {
-        return id + " " + login + " " + hashPassword + " " + admin + " " + email;
+        return id + " " + login + " " + hashPassword + " " + admin + " " + fromGoogle;
     }
 
     public boolean isAdmin() {
@@ -80,5 +82,18 @@ public class User {
 
     public void setFromGoogle(boolean fromGoogle) {
         this.fromGoogle = fromGoogle;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return id == user.id && admin == user.admin && fromGoogle == user.fromGoogle && Objects.equals(login, user.login) && Objects.equals(hashPassword, user.hashPassword) && Objects.equals(email, user.email);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, admin, login, hashPassword, email, fromGoogle);
     }
 }

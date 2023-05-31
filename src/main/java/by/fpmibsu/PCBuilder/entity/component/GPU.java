@@ -2,13 +2,18 @@ package by.fpmibsu.PCBuilder.entity.component;
 
 import by.fpmibsu.PCBuilder.entity.component.utils.VideoMemoryType;
 
-public class GPU extends Component{
+import java.util.Objects;
+
+public class GPU extends Component {
     private int videoMemory;
     private int clockSpeed;
     private VideoMemoryType videoMemoryType;
-    public GPU(int id, int price, String name, String brand, VideoMemoryType videoMemoryType) {
+
+    public GPU(int id, int price, String name, String brand, int clockSpeed, VideoMemoryType videoMemoryType, int videoMemory) {
         super(id, price, name, brand);
         this.videoMemoryType = videoMemoryType;
+        this.clockSpeed = clockSpeed;
+        this.videoMemory = videoMemory;
     }
 
     public int getVideoMemory() {
@@ -35,7 +40,7 @@ public class GPU extends Component{
         this.videoMemoryType = videoMemoryType;
     }
 
-    public GPU(){
+    public GPU() {
 
     }
 
@@ -46,5 +51,18 @@ public class GPU extends Component{
                 ", clockSpeed=" + clockSpeed +
                 ", videoMemoryType=" + videoMemoryType +
                 '}';
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.getId(), super.getName(), super.getBrand(), super.getPrice(), videoMemory, clockSpeed, videoMemoryType);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        GPU gpu = (GPU) o;
+        return super.getId() == getId() && Objects.equals(super.getName(), getName()) && Objects.equals(super.getBrand(), getBrand()) && super.getPrice() == getPrice()  && videoMemory == gpu.videoMemory && clockSpeed == gpu.clockSpeed && videoMemoryType == gpu.videoMemoryType;
     }
 }
