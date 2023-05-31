@@ -1,2 +1,5 @@
 .idea/
 targer/
+*.jar
+web/
+lib/
