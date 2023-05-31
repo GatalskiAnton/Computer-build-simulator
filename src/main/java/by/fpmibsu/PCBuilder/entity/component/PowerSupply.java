@@ -26,6 +26,11 @@ public class PowerSupply extends Component{
         return super.getId() == getId() && Objects.equals(super.getName(), getName()) && Objects.equals(super.getBrand(), getBrand()) && super.getPrice() == getPrice()  && power == that.power;
     }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.getId(), super.getName(), super.getBrand(), super.getPrice(),  power);
+    }
+
     public PowerSupply(){
 
     }

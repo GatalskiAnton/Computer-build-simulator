@@ -2,7 +2,7 @@ package by.fpmibsu.PCBuilder.action;
 
 import by.fpmibsu.PCBuilder.dao.DaoException;
 import by.fpmibsu.PCBuilder.entity.User;
-import by.fpmibsu.PCBuilder.service.UserService;
+import by.fpmibsu.PCBuilder.service.UserServiceImpl;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import org.jetbrains.annotations.NotNull;
@@ -32,7 +32,7 @@ public abstract class  Action {
         String json = reader.lines().collect(Collectors.joining());
         Gson gson = new Gson();
         reqData = gson.fromJson(json, JsonObject.class);
-        UserService service = new UserService();
+        UserServiceImpl service = new UserServiceImpl();
         if(reqData.get("login").getAsString().equals("guest")) {
             guest = true;
         }

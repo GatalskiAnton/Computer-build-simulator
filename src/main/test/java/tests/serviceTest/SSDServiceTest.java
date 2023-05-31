@@ -2,7 +2,7 @@ package serviceTest;
 
 import by.fpmibsu.PCBuilder.dao.DaoException;
 import by.fpmibsu.PCBuilder.entity.component.SSD;
-import by.fpmibsu.PCBuilder.service.SSDService;
+import by.fpmibsu.PCBuilder.service.SSDServiceImpl;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -13,7 +13,7 @@ import java.util.List;
 public class SSDServiceTest {
     @Test(description = "Check getAllComponent")
     public void testGetComponentByTDPWithCorrectInput() throws DaoException {
-        SSDService ssdService = new SSDService();
+        SSDServiceImpl ssdService = new SSDServiceImpl();
         List<SSD> ssds = ssdService.getAllComponents();
         List<SSD> expectedSsds = new ArrayList<>(Arrays.asList(
                 new SSD(1, 52, "AS350 256GB AP256GAS350-1", "Apacer Panther", 256),

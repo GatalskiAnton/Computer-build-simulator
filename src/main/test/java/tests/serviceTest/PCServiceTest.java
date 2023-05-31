@@ -7,14 +7,14 @@ import by.fpmibsu.PCBuilder.entity.component.utils.Color;
 import by.fpmibsu.PCBuilder.entity.component.utils.MemoryType;
 import by.fpmibsu.PCBuilder.entity.component.utils.Socket;
 import by.fpmibsu.PCBuilder.entity.component.utils.VideoMemoryType;
-import by.fpmibsu.PCBuilder.service.PCService;
+import by.fpmibsu.PCBuilder.service.PCServiceImpl;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class PCServiceTest {
     @Test(description = "Check getPrice with correct input")
     public void testGetPriceWithCorrectInput() throws DaoException {
-        PCService pcService = new PCService();
+        PCServiceImpl pcService = new PCServiceImpl();
         PC pc = new PC();
         pc.setCooler(new Cooler(1, 219, "AK620 Zero Dark R-AK620-BKNNMT-G-1", "DeepCool", Socket.AM5, 260, 120));
         pc.setCpu(new CPU(1, 100, "Ryzen 5 5600x", "AMD", 4600, Socket.AM5, 65, 6));
@@ -32,7 +32,7 @@ public class PCServiceTest {
 
     @Test(description = "Check getPrice with incorrect input")
     public void testGetPriceWithIncorrectInput() throws DaoException {
-        PCService pcService = new PCService();
+        PCServiceImpl pcService = new PCServiceImpl();
         PC pc = new PC();
         pc.setCooler(new Cooler(1, 219, "AK620 Zero Dark R-AK620-BKNNMT-G-1", "DeepCool", Socket.AM5, 260, 120));
         pc.setCpu(new CPU(1, 100, "Ryzen 5 5600x", "AMD", 4600, Socket.AM5, 65, 6));

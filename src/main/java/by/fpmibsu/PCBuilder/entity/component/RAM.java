@@ -46,4 +46,9 @@ public class RAM extends Component{
         RAM ram = (RAM) o;
         return super.getId() == getId() && Objects.equals(super.getName(), getName()) && Objects.equals(super.getBrand(), getBrand()) && super.getPrice() == getPrice()  && speed == ram.speed && memoryType == ram.memoryType;
     }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.getId(), super.getName(), super.getBrand(), super.getPrice(), speed, memoryType);
+    }
 }

@@ -28,4 +28,9 @@ public class ROM extends Component{
 
     public ROM() {
     }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.getId(), super.getName(), super.getBrand(), super.getPrice(), capacity);
+    }
 }

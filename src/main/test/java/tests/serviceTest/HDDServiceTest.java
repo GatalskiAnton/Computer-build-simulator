@@ -2,7 +2,7 @@ package serviceTest;
 
 import by.fpmibsu.PCBuilder.dao.DaoException;
 import by.fpmibsu.PCBuilder.entity.component.HDD;
-import by.fpmibsu.PCBuilder.service.HDDService;
+import by.fpmibsu.PCBuilder.service.HDDServiceImpl;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -13,7 +13,7 @@ import java.util.List;
 public class HDDServiceTest {
     @Test(description = "Check getAllComponent")
     public void testGetComponentByTDPWithCorrectInput() throws DaoException {
-        HDDService hddService = new HDDService();
+        HDDServiceImpl hddService = new HDDServiceImpl();
         List<HDD> hdds = hddService.getAllComponents();
         List<HDD> expectedHdds = new ArrayList<>(Arrays.asList(
                 new HDD(1, 130, "Caviar Blue 1 TB(WD10EZEX)", "WD", 1),

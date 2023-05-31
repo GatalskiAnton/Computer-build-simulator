@@ -27,6 +27,11 @@ public class CPU extends Component{
         this.TDP = TDP;
     }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.getId(), super.getName(), super.getBrand(), super.getPrice(), socket, core, clockSpeed, TDP);
+    }
+
     public Socket getSocket() {
         return socket;
     }

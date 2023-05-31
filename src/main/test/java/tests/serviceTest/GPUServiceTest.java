@@ -3,7 +3,7 @@ package serviceTest;
 import by.fpmibsu.PCBuilder.dao.DaoException;
 import by.fpmibsu.PCBuilder.entity.component.GPU;
 import by.fpmibsu.PCBuilder.entity.component.utils.VideoMemoryType;
-import by.fpmibsu.PCBuilder.service.GPUService;
+import by.fpmibsu.PCBuilder.service.GPUServiceImpl;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -15,7 +15,7 @@ public class GPUServiceTest {
 
     @Test(description = "Check getAllComponent")
     public void testGetComponentByTDPWithCorrectInput() throws DaoException {
-        GPUService gpuService = new GPUService();
+        GPUServiceImpl gpuService = new GPUServiceImpl();
         List<GPU> gpus = gpuService.getAllComponents();
         List<GPU> expectedGpus = new ArrayList<>(Arrays.asList(
                 new GPU(2, 2100, "Quadro P5000 16GB GDDR5 900-5G413-2500-000", "NVIDIA", 1733, VideoMemoryType.GDDR5X, 16),

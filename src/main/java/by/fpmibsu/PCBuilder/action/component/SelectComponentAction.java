@@ -4,7 +4,7 @@ import by.fpmibsu.PCBuilder.action.ActionError;
 import by.fpmibsu.PCBuilder.dao.DaoException;
 import by.fpmibsu.PCBuilder.entity.PC;
 import by.fpmibsu.PCBuilder.entity.component.Component;
-import by.fpmibsu.PCBuilder.service.PCService;
+import by.fpmibsu.PCBuilder.service.PCServiceImpl;
 import org.jetbrains.annotations.NotNull;
 
 import javax.servlet.http.HttpServletRequest;
@@ -25,7 +25,7 @@ public class SelectComponentAction extends ComponentAction{
         if(component.getId() == 0) {
             ActionError.sendError(res, "invalidComponentId");
         }
-        PC pc = new PCService().getPc(reqData.get("login").getAsString());
+        PC pc = new PCServiceImpl().getPc(reqData.get("login").getAsString());
         if(!componentService.selectComponent(pc.getId(), component)) {
             ActionError.sendError(res, "selectError");
         }

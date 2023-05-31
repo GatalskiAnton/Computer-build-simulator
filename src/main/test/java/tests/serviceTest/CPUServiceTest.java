@@ -4,8 +4,9 @@ import by.fpmibsu.PCBuilder.dao.DaoException;
 import by.fpmibsu.PCBuilder.entity.component.CPU;
 import by.fpmibsu.PCBuilder.entity.component.Cooler;
 import by.fpmibsu.PCBuilder.entity.component.utils.Socket;
-import by.fpmibsu.PCBuilder.service.CPUService;
+import by.fpmibsu.PCBuilder.service.CPUServiceImpl;
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
@@ -14,38 +15,44 @@ import java.util.List;
 
 public class CPUServiceTest {
 
-    @Test(description = "Check getComponentByTDP with correct input ")
-    public void testGetComponentByTDPWithCorrectInput() throws DaoException {
-        CPUService cpuService = new CPUService();
-        List<CPU> cpus = cpuService.getCPUsByTDP(65);
-        List<CPU> expectedCpus = new ArrayList<>(Arrays.asList(
-                new CPU(1, 100, "Ryzen 5 5600x", "AMD", 4600, Socket.AM5, 300, 4)));
-        Assert.assertEquals(cpus, expectedCpus);
+    @DataProvider(name = "tdpProvider")
+    public Object[][] cpuTDPTestProvider(){
+        return new  Object[][]{
+                {300, List.of(new CPU(1, 502, "i5-12400F", "Intel Core", 2400, Socket.LGA1700, 300, 6))},
+                {-123, List.of()},
+                {0, List.of()}
+
+        };
     }
 
-    @Test(description = "Check getComponentByTDP with incorrect input ")
-    public void testGetComponentByTDPWithIncorrectInput() throws DaoException {
-        CPUService cpuService = new CPUService();
-        List<CPU> cpus = cpuService.getCPUsByTDP(-100);
-        List<Cooler> expectedCpus = new ArrayList<>();
-        Assert.assertEquals(cpus, expectedCpus);
+    @DataProvider(name = "socketProvider")
+    public Object[][] coolersSocketTestProvider(){
+        return new  Object[][]{
+                {Socket.LGA1700, List.of(new CPU(1, 502, "i5-12400F", "Intel Core", 2400, Socket.LGA1700, 300, 6)) }
+        };
     }
+
+    @Test(description = "Check getComponentByTDP with correct input", dataProvider = "tdpProvider")
+    public void testGetComponentByTDPWithCorrectInput(int tdp, List<CPU> expectedCpus) throws DaoException {
+        CPUServiceImpl cpuService = new CPUServiceImpl();
+        List<CPU> serviceCpus = cpuService.getCPUsByTDP(tdp);
+        Assert.assertEquals(serviceCpus, expectedCpus);
+    }
+
 
     @Test(description = "Check getAllComponent")
     public void testGetAllComponent() throws DaoException {
-        CPUService cpuService = new CPUService();
+        CPUServiceImpl cpuService = new CPUServiceImpl();
         List<CPU> cpus = cpuService.getAllComponents();
         List<CPU> expectedCpus = new ArrayList<>(Arrays.asList(
-                new CPU(1, 100, "Ryzen 5 5600x", "AMD", 4600, Socket.AM5, 65, 6)));
+                new CPU(1, 502, "i5-12400F", "Intel Core", 2400, Socket.LGA1700, 300, 6)));
         Assert.assertEquals(cpus, expectedCpus);
     }
 
-    @Test(description = "Check getComponentBySocket")
-    public void testGetComponentBySocket() throws DaoException {
-        CPUService cpuService = new CPUService();
-        List<CPU> cpus = cpuService.getCPUsBySocket(Socket.AM5);
-        List<CPU> expectedCpus = new ArrayList<>(Arrays.asList(
-                new CPU(1, 100, "Ryzen 5 5600x", "AMD", 4600, Socket.AM5, 65, 6)));
-        Assert.assertEquals(cpus, expectedCpus);
+    @Test(description = "Check getComponentBySocket", dataProvider = "socketProvider")
+    public void testGetComponentBySocket(Socket socket, List<CPU> expectedCpus) throws DaoException {
+        CPUServiceImpl cpuService = new CPUServiceImpl();
+        List<CPU> serviceCpus = cpuService.getCPUsBySocket(socket);
+        Assert.assertEquals(serviceCpus, expectedCpus);
     }
 }

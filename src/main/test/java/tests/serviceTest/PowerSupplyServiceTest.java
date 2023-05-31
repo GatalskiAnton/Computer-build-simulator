@@ -14,7 +14,7 @@ import by.fpmibsu.PCBuilder.service.*;
 public class PowerSupplyServiceTest {
     @Test(description = "Check getAllComponent")
     public void testGetComponentByTDPWithCorrectInput() throws DaoException {
-        PowerSupplyService powerSupplyService = new PowerSupplyService();
+        PowerSupplyServiceImpl powerSupplyService = new PowerSupplyServiceImpl();
         List<PowerSupply> powerSupplies = powerSupplyService.getAllComponents();
         List<PowerSupply> expectedPowerSupplies = new ArrayList<>(Arrays.asList(
                 new PowerSupply(1, 360, "Leadex III Gold ARGB Pro 650W SF-650F14RG V2.0", "Super Flower", 650),

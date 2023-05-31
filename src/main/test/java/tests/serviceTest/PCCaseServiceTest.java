@@ -3,7 +3,7 @@ package serviceTest;
 import by.fpmibsu.PCBuilder.dao.DaoException;
 import by.fpmibsu.PCBuilder.entity.component.PCCase;
 import by.fpmibsu.PCBuilder.entity.component.utils.Color;
-import by.fpmibsu.PCBuilder.service.PCCaseService;
+import by.fpmibsu.PCBuilder.service.PCCaseServiceImpl;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -14,7 +14,7 @@ import java.util.List;
 public class PCCaseServiceTest {
     @Test(description = "Check getAllComponent")
     public void testGetAllComponent() throws DaoException {
-        PCCaseService pcCaseService = new PCCaseService();
+        PCCaseServiceImpl pcCaseService = new PCCaseServiceImpl();
         List<PCCase> pcCases = pcCaseService.getAllComponents();
         List<PCCase> expectedPCCases = new ArrayList<>(Arrays.asList(
                 new PCCase(1, 348, "Lancool II Mesh RGB G99.LAN2MRX.50", "Lian Li", Color.BLACK),

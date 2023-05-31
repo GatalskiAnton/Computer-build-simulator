@@ -3,7 +3,7 @@ package serviceTest;
 import by.fpmibsu.PCBuilder.dao.DaoException;
 import by.fpmibsu.PCBuilder.entity.component.RAM;
 import by.fpmibsu.PCBuilder.entity.component.utils.MemoryType;
-import by.fpmibsu.PCBuilder.service.RamService;
+import by.fpmibsu.PCBuilder.service.RamServiceImpl;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -14,7 +14,7 @@ import java.util.List;
 public class RamServiceTest {
     @Test(description = "Check getAllComponent")
     public void testGetComponentByTDPWithCorrectInput() throws DaoException {
-        RamService ramService = new RamService();
+        RamServiceImpl ramService = new RamServiceImpl();
         List<RAM> rams = ramService.getAllComponents();
         List<RAM> expectedRams = new ArrayList<>(Arrays.asList(
                 new RAM(1, 489, "Ripjaws S5 2x16ГБ DDR5 5600 МГц F5-5600J3036D16GX2-RS5K", "G.Skill", 5600, MemoryType.DDR5),
