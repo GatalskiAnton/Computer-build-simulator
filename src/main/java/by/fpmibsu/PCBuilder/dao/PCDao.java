@@ -1,12 +1,14 @@
 package by.fpmibsu.PCBuilder.dao;
 
+import by.fpmibsu.PCBuilder.dao.utils.PCComponents;
+
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
 public interface PCDao<K,PC extends by.fpmibsu.PCBuilder.entity.PC>{
-    List<PC> findAll() throws DaoException;
-    PC findPCById(K id) throws DaoException;
+    List<PCComponents> findAll() throws DaoException;
+    PCComponents findPCById(K id) throws DaoException;
     PC update(PC pc) throws DaoException;
     boolean delete(PC pc) throws DaoException;
     boolean delete(K id) throws DaoException;

@@ -32,6 +32,13 @@ public abstract class  Action {
         String json = reader.lines().collect(Collectors.joining());
         Gson gson = new Gson();
         reqData = gson.fromJson(json, JsonObject.class);
+        if(reqData == null) {
+            userId = -1;
+            return;
+        }
+        if(!reqData.has("login") && req.getRequestURI().contains("docs")) {
+            return;
+        }
         UserServiceImpl service = new UserServiceImpl();
         if(reqData.get("login").getAsString().equals("guest")) {
             guest = true;

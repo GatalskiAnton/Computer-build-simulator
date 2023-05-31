@@ -1,5 +1,6 @@
 package by.fpmibsu.PCBuilder.dao;
 
+import by.fpmibsu.PCBuilder.dao.utils.PCComponents;
 import by.fpmibsu.PCBuilder.db.ConnectionCreator;
 import by.fpmibsu.PCBuilder.entity.*;
 
@@ -20,8 +21,8 @@ public class PCDaoImpl implements PCDao<Integer, PC> {
 
     private static final String SQL_INSERT_PC = "INSERT INTO pc(id, userId, powersupplyId, ssdId, hddId, pccaseId, motherboardId, gpuId, cpuId, coolerId, ramId) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
     @Override
-    public List<PC> findAll() throws DaoException {
-        List<PC> PCs = new ArrayList<>();
+    public List<PCComponents> findAll() throws DaoException {
+        List<PCComponents> PCs = new ArrayList<>();
         Connection connection = null;
         Statement statement = null;
         try {
@@ -29,9 +30,9 @@ public class PCDaoImpl implements PCDao<Integer, PC> {
             statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(SQL_SELECT_ALL_PC);
             while (resultSet.next()){
-                PC pc = new PC();
-                GetPc(pc, resultSet);
-                PCs.add(pc);
+                PCComponents c = new PCComponents();
+                getPc(resultSet, c);
+                PCs.add(c);
             }
         } catch (SQLException e) {
             throw new DaoException(e);
@@ -41,58 +42,40 @@ public class PCDaoImpl implements PCDao<Integer, PC> {
         return PCs;
     }
 
+    private void getPc(ResultSet resultSet, PCComponents c) throws SQLException {
+        c.setId(resultSet.getInt("id"));
+        c.setCPUID(resultSet.getInt("cpuId"));
+        c.setGPUID(resultSet.getInt("gpuId"));
+        c.setUserID(resultSet.getInt("userId"));
+        c.setCoolerID(resultSet.getInt("coolerId"));
+        c.setHDDID(resultSet.getInt("hddId"));
+        c.setMotherBoardID(resultSet.getInt("motherboardId"));
+        c.setPcCaseID(resultSet.getInt("pccaseId"));
+        c.setPowerSupplyID(resultSet.getInt("powersupplyId"));
+        c.setRAMID(resultSet.getInt("ramId"));
+        c.setSSDID(resultSet.getInt("ssdId"));
+    }
+
     @Override
-    public PC findPCById(Integer id) throws DaoException {
+    public PCComponents findPCById(Integer id) throws DaoException {
         PC pc = new PC();
         Connection connection = null;
         PreparedStatement statement = null;
+        PCComponents c = new PCComponents();
         try {
             connection = ConnectionCreator.createConnection();
             statement = connection.prepareStatement(SQL_SELECT_PC_BY_ID);
             statement.setInt(1, id);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()){
-                GetPc(pc, resultSet);
+                getPc(resultSet, c);
             }
         } catch (SQLException e) {
             throw new DaoException(e);
         } finally {
             close(connection);
         }
-        return pc;
-    }
-
-    private void GetPc(PC pc, ResultSet resultSet) throws SQLException, DaoException {
-        pc.setId(resultSet.getInt("id"));
-
-        pc.setUserId(resultSet.getInt("userId"));
-
-        PowerSupplyDaoImpl powerSupplyDao = new PowerSupplyDaoImpl();
-        pc.setPowerSupply(powerSupplyDao.findComponentById(resultSet.getInt("powerSupplyId")));
-
-        SSDDaoImpl ssdDao = new SSDDaoImpl();
-        pc.setSsd(ssdDao.findComponentById(resultSet.getInt("ssdId")));
-
-        HDDDaoImpl hddDao = new HDDDaoImpl();
-        pc.setHdd(hddDao.findComponentById(resultSet.getInt("hddId")));
-
-        PCCaseDaoImpl pcCaseDao = new PCCaseDaoImpl();
-        pc.setPCCase(pcCaseDao.findComponentById(resultSet.getInt("pccaseId")));
-
-        MotherboardDaoImpl motherboardDao = new MotherboardDaoImpl();
-        pc.setMotherboard(motherboardDao.findComponentById(resultSet.getInt("motherboardId")));
-
-        GPUDaoImpl gpuDao = new GPUDaoImpl();
-        pc.setGpu(gpuDao.findComponentById(resultSet.getInt("gpuId")));
-
-        CPUDaoImpl cpuDao = new CPUDaoImpl();
-        pc.setCpu(cpuDao.findComponentById(resultSet.getInt("cpuId")));
-
-        CoolerDaoImpl coolerDao = new CoolerDaoImpl();
-        pc.setCooler(coolerDao.findComponentById(resultSet.getInt("coolerId")));
-
-        RAMDaoImpl ramDao = new RAMDaoImpl();
-        pc.setRam(ramDao.findComponentById(resultSet.getInt("ramId")));
+        return c;
     }
 
     @Override

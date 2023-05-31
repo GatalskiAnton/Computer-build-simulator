@@ -1,5 +1,7 @@
 .idea/
-targer/
+target/
 *.jar
 web/
 lib/
+out/
+res/

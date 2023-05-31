@@ -1,9 +1,9 @@
 package by.fpmibsu.PCBuilder.service;
 
-import by.fpmibsu.PCBuilder.dao.DaoException;
-import by.fpmibsu.PCBuilder.dao.PCDaoImpl;
-import by.fpmibsu.PCBuilder.dao.UserDaoImpl;
+import by.fpmibsu.PCBuilder.dao.*;
+import by.fpmibsu.PCBuilder.dao.utils.PCComponents;
 import by.fpmibsu.PCBuilder.entity.PC;
+import by.fpmibsu.PCBuilder.entity.component.Motherboard;
 
 
 public class PCServiceImpl implements PCService {
@@ -31,7 +31,20 @@ public class PCServiceImpl implements PCService {
     public PC getPC(int pcId) {
         PCDaoImpl pcDao = new PCDaoImpl();
         try {
-            return pcDao.findPCById(pcId);
+            PCComponents c = pcDao.findPCById(pcId);
+            PC pc = new PC();
+            pc.setId(c.getId());
+            pc.setUserId(c.getUserID());
+            pc.setCooler(new CoolerDaoImpl().findComponentById(c.getCoolerID()));
+            pc.setCpu(new CPUDaoImpl().findComponentById(c.getCPUID()));
+            pc.setGpu(new GPUDaoImpl().findComponentById(c.getGPUID()));
+            pc.setHdd(new HDDDaoImpl().findComponentById(c.getHDDID()));
+            pc.setMotherboard(new MotherboardDaoImpl().findComponentById(c.getMotherBoardID()));
+            pc.setPCCase(new PCCaseDaoImpl().findComponentById(c.getPcCaseID()));
+            pc.setPowerSupply(new PowerSupplyDaoImpl().findComponentById(c.getPowerSupplyID()));
+            pc.setRam(new RAMDaoImpl().findComponentById(c.getRAMID()));
+            pc.setSsd(new SSDDaoImpl().findComponentById(c.getSSDID()));
+            return pc;
         } catch (DaoException e) {
             return null;
         }
