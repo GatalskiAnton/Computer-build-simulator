@@ -6,10 +6,10 @@
 
 
 ### Веб приложение
-[Ссылка](https://www.example.com](https://github.com/GatalskiAnton/Computer-build-simulator-mobile)
+[Ссылка](https://github.com/GatalskiAnton/Computer-build-simulator-mobile)
 
 ### Мобильное приоложение
-[Ссылка](https://www.example.com](https://github.com/GatalskiAnton/Computer-build-simulator-web)
+[Ссылка](https://github.com/GatalskiAnton/Computer-build-simulator-web)
 
 #### Стек технологий
 
