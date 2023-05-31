@@ -43,7 +43,7 @@ public class SSDDao implements ComponentDaoI<Integer, SSD> {
                 ssds.add(ssd);
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new DaoException(e);
         } finally {
             close(connection);
         }
@@ -68,7 +68,7 @@ public class SSDDao implements ComponentDaoI<Integer, SSD> {
                 ssd.setCapacity(resultSet.getInt("capacity"));
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new DaoException(e);
         } finally {
             close(connection);
         }
@@ -89,7 +89,7 @@ public class SSDDao implements ComponentDaoI<Integer, SSD> {
             statement.setInt(5,ssd.getCapacity());
             statement.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new DaoException(e);
         } finally {
             close(connection);
         }
@@ -111,7 +111,7 @@ public class SSDDao implements ComponentDaoI<Integer, SSD> {
             statement.setInt(5,ssd.getCapacity());
             rowsUpdate = statement.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new DaoException(e);
         } finally {
             close(connection);
         }
@@ -130,7 +130,7 @@ public class SSDDao implements ComponentDaoI<Integer, SSD> {
             statement.setInt(1, id);
             rowsUpdate = statement.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new DaoException(e);
         } finally {
             close(connection);
         }
@@ -153,7 +153,7 @@ public class SSDDao implements ComponentDaoI<Integer, SSD> {
             statement.setInt(5,ssd.getCapacity());
             rowsUpdate = statement.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new DaoException(e);
         } finally {
             close(connection);
         }

@@ -58,7 +58,7 @@ public class Cooler extends Component{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Cooler cooler = (Cooler) o;
-        return TDP == cooler.TDP && diameter == cooler.diameter && socket == cooler.socket;
+        return super.getId() == getId() && Objects.equals(super.getName(), getName()) && Objects.equals(super.getBrand(), getBrand()) && super.getPrice() == getPrice()  && TDP == cooler.TDP && diameter == cooler.diameter && socket == cooler.socket;
     }
 }
 

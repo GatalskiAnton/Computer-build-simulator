@@ -37,7 +37,7 @@ public class PCCase extends Component{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         PCCase pcCase = (PCCase) o;
-        return color == pcCase.color;
+        return super.getId() == getId() && Objects.equals(super.getName(), getName()) && Objects.equals(super.getBrand(), getBrand()) && super.getPrice() == getPrice()  && color == pcCase.color;
     }
 }
 

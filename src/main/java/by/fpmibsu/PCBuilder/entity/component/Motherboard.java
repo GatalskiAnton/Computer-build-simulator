@@ -36,6 +36,6 @@ public class Motherboard extends Component{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Motherboard that = (Motherboard) o;
-        return socket == that.socket;
+        return super.getId() == getId() && Objects.equals(super.getName(), getName()) && Objects.equals(super.getBrand(), getBrand()) && super.getPrice() == getPrice()  && socket == that.socket;
     }
 }

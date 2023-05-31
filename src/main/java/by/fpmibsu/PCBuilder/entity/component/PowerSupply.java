@@ -23,7 +23,7 @@ public class PowerSupply extends Component{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         PowerSupply that = (PowerSupply) o;
-        return power == that.power;
+        return super.getId() == getId() && Objects.equals(super.getName(), getName()) && Objects.equals(super.getBrand(), getBrand()) && super.getPrice() == getPrice()  && power == that.power;
     }
 
     public PowerSupply(){

@@ -16,7 +16,7 @@ import org.apache.logging.log4j.Logger;
 
 public class Runner {
     public static void main(String[] args) throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException, DaoException {
-        System.setProperty("log4j.configurationFile", ".\\src\\main\\resources\\log4j2.xml");
+//        System.setProperty("log4j.configurationFile", ".\\src\\main\\resources\\log4j2.xml");
         Logger log = LogManager.getLogger(CoolerService.class);
 
         log.error("error");

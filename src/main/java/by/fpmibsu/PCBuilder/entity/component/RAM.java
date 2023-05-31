@@ -44,6 +44,6 @@ public class RAM extends Component{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         RAM ram = (RAM) o;
-        return speed == ram.speed && memoryType == ram.memoryType;
+        return super.getId() == getId() && Objects.equals(super.getName(), getName()) && Objects.equals(super.getBrand(), getBrand()) && super.getPrice() == getPrice()  && speed == ram.speed && memoryType == ram.memoryType;
     }
 }

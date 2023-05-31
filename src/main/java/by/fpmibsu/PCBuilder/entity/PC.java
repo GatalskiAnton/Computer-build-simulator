@@ -2,6 +2,8 @@ package by.fpmibsu.PCBuilder.entity;
 
 import by.fpmibsu.PCBuilder.entity.component.*;
 
+import java.util.Objects;
+
 public class PC {
 
     private int id;
@@ -132,6 +134,19 @@ public class PC {
 
     public void setUserId(int userId) {
         this.userId = userId;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        PC pc = (PC) o;
+        return id == pc.id && userId == pc.userId && Objects.equals(PCCase, pc.PCCase) && Objects.equals(cooler, pc.cooler) && Objects.equals(cpu, pc.cpu) && Objects.equals(ssd, pc.ssd) && Objects.equals(hdd, pc.hdd) && Objects.equals(ram, pc.ram) && Objects.equals(motherboard, pc.motherboard) && Objects.equals(powerSupply, pc.powerSupply) && Objects.equals(gpu, pc.gpu);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, userId, PCCase, cooler, cpu, ssd, hdd, ram, motherboard, powerSupply, gpu);
     }
 
     @Override

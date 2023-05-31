@@ -46,7 +46,7 @@ public class MotherboardDao implements ComponentDaoI<Integer, Motherboard> {
                 motherboards.add(motherboard);
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new DaoException(e);
         } finally {
             close(connection);
         }
@@ -71,7 +71,7 @@ public class MotherboardDao implements ComponentDaoI<Integer, Motherboard> {
                 motherboard.setSocket(Socket.valueOf(resultSet.getString("socket")));
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new DaoException(e);
         } finally {
             close(connection);
         }
@@ -93,7 +93,7 @@ public class MotherboardDao implements ComponentDaoI<Integer, Motherboard> {
             statement.setInt(6, motherboard.getId());
             statement.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new DaoException(e);
         } finally {
             close(connection);
         }
@@ -115,7 +115,7 @@ public class MotherboardDao implements ComponentDaoI<Integer, Motherboard> {
             statement.setString(5, motherboard.getSocket().toString());
             rowsUpdate = statement.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new DaoException(e);
         } finally {
             close(connection);
         }
@@ -134,7 +134,7 @@ public class MotherboardDao implements ComponentDaoI<Integer, Motherboard> {
             statement.setInt(1, id);
             rowsUpdate = statement.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new DaoException(e);
         } finally {
             close(connection);
         }
@@ -157,7 +157,7 @@ public class MotherboardDao implements ComponentDaoI<Integer, Motherboard> {
             statement.setString(5, motherboard.getSocket().toString());
             rowsUpdate = statement.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new DaoException(e);
         } finally {
             close(connection);
         }
@@ -185,7 +185,7 @@ public class MotherboardDao implements ComponentDaoI<Integer, Motherboard> {
                 motherboards.add(motherboard);
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new DaoException(e);
         } finally {
             close(connection);
         }

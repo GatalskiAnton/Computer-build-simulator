@@ -36,7 +36,7 @@ public class PCDao implements PCDaoI<Integer, PC> {
                 PCs.add(pc);
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new DaoException(e);
         } finally {
             close(connection);
         }
@@ -57,7 +57,7 @@ public class PCDao implements PCDaoI<Integer, PC> {
                 GetPc(pc, resultSet);
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new DaoException(e);
         } finally {
             close(connection);
         }
@@ -201,7 +201,7 @@ public class PCDao implements PCDaoI<Integer, PC> {
             fillStatement(pc, statement);
             rowsUpdate = statement.executeUpdate();
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            throw new DaoException(e);
         } finally {
             close(connection);
         }
@@ -220,7 +220,7 @@ public class PCDao implements PCDaoI<Integer, PC> {
             statement.setInt(2, pc.getUserId());
             rowsUpdate = statement.executeUpdate();
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            throw new DaoException(e);
         } finally {
             close(connection);
         }

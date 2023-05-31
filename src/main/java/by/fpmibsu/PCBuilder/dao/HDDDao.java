@@ -42,7 +42,7 @@ public class HDDDao implements ComponentDaoI<Integer, HDD> {
                 hdds.add(hdd);
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new DaoException(e);
         } finally {
             close(connection);
         }
@@ -67,7 +67,7 @@ public class HDDDao implements ComponentDaoI<Integer, HDD> {
                 hdd.setCapacity(resultSet.getInt("capacity"));
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new DaoException(e);
         } finally {
             close(connection);
         }
@@ -89,7 +89,7 @@ public class HDDDao implements ComponentDaoI<Integer, HDD> {
             statement.setInt(6, hdd.getId());
             statement.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new DaoException(e);
         } finally {
             close(connection);
         }
@@ -111,7 +111,7 @@ public class HDDDao implements ComponentDaoI<Integer, HDD> {
             statement.setInt(5, hdd.getCapacity());
             rowsUpdate = statement.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new DaoException(e);
         } finally {
             close(connection);
         }
@@ -130,7 +130,7 @@ public class HDDDao implements ComponentDaoI<Integer, HDD> {
             statement.setInt(1, id);
             rowsUpdate = statement.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new DaoException(e);
         } finally {
             close(connection);
         }
@@ -153,7 +153,7 @@ public class HDDDao implements ComponentDaoI<Integer, HDD> {
             statement.setInt(5, hdd.getCapacity());
             rowsUpdate = statement.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new DaoException(e);
         } finally {
             close(connection);
         }

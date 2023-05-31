@@ -58,6 +58,6 @@ public class GPU extends Component {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         GPU gpu = (GPU) o;
-        return videoMemory == gpu.videoMemory && clockSpeed == gpu.clockSpeed && videoMemoryType == gpu.videoMemoryType;
+        return super.getId() == getId() && Objects.equals(super.getName(), getName()) && Objects.equals(super.getBrand(), getBrand()) && super.getPrice() == getPrice()  && videoMemory == gpu.videoMemory && clockSpeed == gpu.clockSpeed && videoMemoryType == gpu.videoMemoryType;
     }
 }

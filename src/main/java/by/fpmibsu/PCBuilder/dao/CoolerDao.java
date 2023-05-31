@@ -51,7 +51,7 @@ public class CoolerDao implements ComponentDaoI<Integer, Cooler> {
                 coolers.add(cooler);
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new DaoException(e);
         } finally {
             close(connection);
         }
@@ -78,7 +78,7 @@ public class CoolerDao implements ComponentDaoI<Integer, Cooler> {
                 cooler.setDiameter(resultSet.getInt("diameter"));
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new DaoException(e);
         } finally {
             close(connection);
         }
@@ -102,7 +102,7 @@ public class CoolerDao implements ComponentDaoI<Integer, Cooler> {
             statement.setInt(8, cooler.getId());
             statement.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new DaoException(e);
         } finally {
             close(connection);
         }
@@ -126,7 +126,7 @@ public class CoolerDao implements ComponentDaoI<Integer, Cooler> {
             statement.setInt(7, cooler.getDiameter());
             rowsUpdate = statement.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new DaoException(e);
         } finally {
             close(connection);
         }
@@ -145,7 +145,7 @@ public class CoolerDao implements ComponentDaoI<Integer, Cooler> {
             statement.setInt(1, id);
             rowsUpdate = statement.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new DaoException(e);
         } finally {
             close(connection);
         }
@@ -170,7 +170,7 @@ public class CoolerDao implements ComponentDaoI<Integer, Cooler> {
             statement.setInt(7, cooler.getDiameter());
             rowsUpdate = statement.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new DaoException(e);
         } finally {
             close(connection);
         }
@@ -218,7 +218,7 @@ public class CoolerDao implements ComponentDaoI<Integer, Cooler> {
                 coolers.add(cooler);
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new DaoException(e);
         } finally {
             close(connection);
         }
@@ -247,7 +247,7 @@ public class CoolerDao implements ComponentDaoI<Integer, Cooler> {
                 coolers.add(cooler);
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new DaoException(e);
         } finally {
             close(connection);
         }
@@ -275,7 +275,7 @@ public class CoolerDao implements ComponentDaoI<Integer, Cooler> {
                 coolers.add(cooler);
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new DaoException(e);
         } finally {
             close(connection);
         }

@@ -49,7 +49,7 @@ public class UserDao implements UserDaoI<Integer, User> {
                 users.add(user);
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new DaoException(e);
         } finally {
             close(connection);
         }
@@ -73,7 +73,7 @@ public class UserDao implements UserDaoI<Integer, User> {
                 user.setAdmin(resultSet.getInt("admin") != 0);
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new DaoException(e);
         } finally {
             close(connection);
         }
@@ -95,7 +95,7 @@ public class UserDao implements UserDaoI<Integer, User> {
             statement.setInt(6, user.getId());
             statement.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new DaoException(e);
         } finally {
             close(connection);
         }
@@ -116,7 +116,7 @@ public class UserDao implements UserDaoI<Integer, User> {
             statement.setBoolean(4, user.isAdmin());
             rowsUpdate = statement.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new DaoException(e);
         } finally {
             close(connection);
         }
@@ -135,7 +135,7 @@ public class UserDao implements UserDaoI<Integer, User> {
             statement.setInt(1, id);
             rowsUpdate = statement.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new DaoException(e);
         } finally {
             close(connection);
         }
@@ -158,7 +158,7 @@ public class UserDao implements UserDaoI<Integer, User> {
             statement.setBoolean(5, user.isFromGoogle());
             rowsUpdate = statement.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new DaoException(e);
         } finally {
             close(connection);
         }
@@ -183,7 +183,7 @@ public class UserDao implements UserDaoI<Integer, User> {
             statement.setBoolean(5, true);
             rowsUpdate = statement.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new DaoException(e);
         } finally {
             close(connection);
         }
@@ -239,7 +239,7 @@ public class UserDao implements UserDaoI<Integer, User> {
                 user.setEmail(resultSet.getString("email"));
             }
         } catch (SQLException e) {
-            throw new RuntimeException();
+            throw new DaoException();
         } finally {
             close(connection);
         }

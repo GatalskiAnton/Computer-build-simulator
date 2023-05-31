@@ -1,2 +1,26 @@
 2023-05-29 10:01:15 [main] ERROR CoolerService:22 - error
 2023-05-29 10:01:31 [main] ERROR CoolerService:22 - error
+2023-05-29 10:27:09 [main] ERROR CoolerService:22 - error
+2023-05-29 10:28:43 [main] ERROR CoolerService:22 - error
+2023-05-29 10:29:01 [main] ERROR CoolerService:22 - error
+2023-05-30 23:34:19 [main] INFO  CoolerService:19 - CoolerService calling getAllComponents
+2023-05-30 23:34:20 [main] INFO  CoolerService:53 - CoolerService calling getCoolersBySocket
+2023-05-30 23:34:20 [main] INFO  CoolerService:64 - CoolerService calling getCoolersByTDP
+2023-05-30 23:34:20 [main] INFO  CoolerService:64 - CoolerService calling getCoolersByTDP
+2023-05-30 23:35:15 [main] INFO  CoolerService:64 - CoolerService calling getCoolersByTDP
+2023-05-30 23:35:25 [main] INFO  CoolerService:19 - CoolerService calling getAllComponents
+2023-05-30 23:35:25 [main] INFO  CoolerService:53 - CoolerService calling getCoolersBySocket
+2023-05-30 23:35:25 [main] INFO  CoolerService:64 - CoolerService calling getCoolersByTDP
+2023-05-30 23:35:25 [main] INFO  CoolerService:64 - CoolerService calling getCoolersByTDP
+2023-05-30 23:36:16 [main] INFO  CPUService:23 - CPUService calling getAllComponents
+2023-05-30 23:36:16 [main] INFO  CPUService:58 - CPUService calling getCPUsBySocket
+2023-05-30 23:36:16 [main] INFO  CPUService:70 - CPUService calling getCPUsByTDP
+2023-05-30 23:36:16 [main] INFO  CPUService:70 - CPUService calling getCPUsByTDP
+2023-05-30 23:36:52 [main] INFO  CPUService:23 - CPUService calling getAllComponents
+2023-05-30 23:36:52 [main] INFO  CPUService:58 - CPUService calling getCPUsBySocket
+2023-05-30 23:36:52 [main] INFO  CPUService:70 - CPUService calling getCPUsByTDP
+2023-05-30 23:36:52 [main] INFO  CPUService:70 - CPUService calling getCPUsByTDP
+2023-05-30 23:47:16 [main] INFO  CoolerService:19 - CoolerService calling getAllComponents
+2023-05-30 23:47:16 [main] INFO  CoolerService:53 - CoolerService calling getCoolersBySocket
+2023-05-30 23:47:16 [main] INFO  CoolerService:64 - CoolerService calling getCoolersByTDP
+2023-05-30 23:47:16 [main] INFO  CoolerService:64 - CoolerService calling getCoolersByTDP

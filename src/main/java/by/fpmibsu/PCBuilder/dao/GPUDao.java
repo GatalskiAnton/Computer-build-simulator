@@ -46,7 +46,7 @@ public class GPUDao implements ComponentDaoI<Integer, GPU> {
                 gpus.add(gpu);
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new DaoException(e);
         } finally {
             close(connection);
         }
@@ -73,7 +73,7 @@ public class GPUDao implements ComponentDaoI<Integer, GPU> {
                 gpu.setVideoMemory(resultSet.getInt("videoMemory"));
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new DaoException(e);
         } finally {
             close(connection);
         }
@@ -96,7 +96,7 @@ public class GPUDao implements ComponentDaoI<Integer, GPU> {
             statement.setInt(7, gpu.getVideoMemory());
             statement.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new DaoException(e);
         } finally {
             close(connection);
         }
@@ -121,7 +121,7 @@ public class GPUDao implements ComponentDaoI<Integer, GPU> {
             statement.setInt(8, gpu.getId());
             rowsUpdate = statement.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new DaoException(e);
         } finally {
             close(connection);
         }
@@ -140,7 +140,7 @@ public class GPUDao implements ComponentDaoI<Integer, GPU> {
             statement.setInt(1, id);
             rowsUpdate = statement.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new DaoException(e);
         } finally {
             close(connection);
         }
@@ -165,7 +165,7 @@ public class GPUDao implements ComponentDaoI<Integer, GPU> {
             statement.setInt(7, gpu.getVideoMemory());
             rowsUpdate = statement.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new DaoException(e);
         } finally {
             close(connection);
         }

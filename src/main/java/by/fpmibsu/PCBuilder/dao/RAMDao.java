@@ -42,7 +42,7 @@ public class RAMDao implements ComponentDaoI<Integer, RAM> {
                 rams.add(ram);
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new DaoException(e);
         } finally {
             close(connection);
         }
@@ -68,7 +68,7 @@ public class RAMDao implements ComponentDaoI<Integer, RAM> {
                 ram.setMemoryType(MemoryType.valueOf(resultSet.getString("memoryType")));
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new DaoException(e);
         } finally {
             close(connection);
         }
@@ -90,7 +90,7 @@ public class RAMDao implements ComponentDaoI<Integer, RAM> {
             statement.setString(6, ram.getMemoryType().toString());
             statement.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new DaoException(e);
         } finally {
             close(connection);
         }
@@ -113,7 +113,7 @@ public class RAMDao implements ComponentDaoI<Integer, RAM> {
             statement.setString(6, ram.getMemoryType().toString());
             rowsUpdate = statement.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new DaoException(e);
         } finally {
             close(connection);
         }
@@ -132,7 +132,7 @@ public class RAMDao implements ComponentDaoI<Integer, RAM> {
             statement.setInt(1, id);
             rowsUpdate = statement.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new DaoException(e);
         } finally {
             close(connection);
         }
@@ -156,7 +156,7 @@ public class RAMDao implements ComponentDaoI<Integer, RAM> {
             statement.setString(6, ram.getMemoryType().toString());
             rowsUpdate = statement.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new DaoException(e);
         } finally {
             close(connection);
         }

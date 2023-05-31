@@ -16,7 +16,7 @@ public class CPU extends Component{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         CPU cpu = (CPU) o;
-        return core == cpu.core && clockSpeed == cpu.clockSpeed && TDP == cpu.TDP && socket == cpu.socket;
+        return super.getId() == getId() && Objects.equals(super.getName(), getName()) && Objects.equals(super.getBrand(), getBrand()) && super.getPrice() == getPrice()  && core == cpu.core && clockSpeed == cpu.clockSpeed && TDP == cpu.TDP && socket == cpu.socket;
     }
 
     public CPU(int id, int price, String name, String brand, int clockSpeed, Socket socket, int TDP, int core) {

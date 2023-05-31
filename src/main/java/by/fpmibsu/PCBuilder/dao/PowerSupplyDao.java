@@ -40,7 +40,7 @@ public class PowerSupplyDao implements ComponentDaoI<Integer, PowerSupply> {
                 powerSupplies.add(powerSupply);
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new DaoException(e);
         } finally {
             close(connection);
         }
@@ -65,7 +65,7 @@ public class PowerSupplyDao implements ComponentDaoI<Integer, PowerSupply> {
                 powerSupply.setPower(resultSet.getInt("power"));
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new DaoException(e);
         } finally {
             close(connection);
         }
@@ -86,7 +86,7 @@ public class PowerSupplyDao implements ComponentDaoI<Integer, PowerSupply> {
             statement.setInt(5, powerSupply.getPower());
             statement.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new DaoException(e);
         } finally {
             close(connection);
         }
@@ -108,7 +108,7 @@ public class PowerSupplyDao implements ComponentDaoI<Integer, PowerSupply> {
             statement.setInt(5, powerSupply.getPower());
             rowsUpdate = statement.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new DaoException(e);
         } finally {
             close(connection);
         }
@@ -127,7 +127,7 @@ public class PowerSupplyDao implements ComponentDaoI<Integer, PowerSupply> {
             statement.setInt(1, id);
             rowsUpdate = statement.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new DaoException(e);
         } finally {
             close(connection);
         }
@@ -150,7 +150,7 @@ public class PowerSupplyDao implements ComponentDaoI<Integer, PowerSupply> {
             statement.setInt(5, powerSupply.getPower());
             rowsUpdate = statement.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new DaoException(e);
         } finally {
             close(connection);
         }

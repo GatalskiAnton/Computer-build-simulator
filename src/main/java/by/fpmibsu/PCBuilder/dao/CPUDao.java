@@ -48,7 +48,7 @@ public class CPUDao implements ComponentDaoI<Integer, CPU> {
                 cpus.add(cpu);
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new DaoException(e);
         } finally {
             close(connection);
         }
@@ -76,7 +76,7 @@ public class CPUDao implements ComponentDaoI<Integer, CPU> {
                 cpu.setCore(resultSet.getInt("core"));
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new DaoException(e);
         } finally {
             close(connection);
         }
@@ -100,7 +100,7 @@ public class CPUDao implements ComponentDaoI<Integer, CPU> {
             statement.setInt(8, cpu.getCore());
             statement.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new DaoException(e);
         } finally {
             close(connection);
         }
@@ -125,7 +125,7 @@ public class CPUDao implements ComponentDaoI<Integer, CPU> {
             statement.setInt(8, cpu.getCore());
             rowsUpdate = statement.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new DaoException(e);
         } finally {
             close(connection);
         }
@@ -144,7 +144,7 @@ public class CPUDao implements ComponentDaoI<Integer, CPU> {
             statement.setInt(1, id);
             rowsUpdate = statement.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new DaoException(e);
         } finally {
             close(connection);
         }
@@ -170,7 +170,7 @@ public class CPUDao implements ComponentDaoI<Integer, CPU> {
             statement.setInt(8, cpu.getCore());
             rowsUpdate = statement.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new DaoException(e);
         } finally {
             close(connection);
         }
@@ -200,7 +200,7 @@ public class CPUDao implements ComponentDaoI<Integer, CPU> {
                 cpus.add(cpu);
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new DaoException(e);
         } finally {
             close(connection);
         }
@@ -229,7 +229,7 @@ public class CPUDao implements ComponentDaoI<Integer, CPU> {
                 cpus.add(cpu);
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new DaoException(e);
         } finally {
             close(connection);
         }

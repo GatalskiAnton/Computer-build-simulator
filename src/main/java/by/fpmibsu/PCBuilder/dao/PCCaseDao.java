@@ -45,7 +45,7 @@ public class PCCaseDao implements ComponentDaoI<Integer, PCCase> {
                 cases.add(pcCase);
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new DaoException(e);
         } finally {
             close(connection);
         }
@@ -70,7 +70,7 @@ public class PCCaseDao implements ComponentDaoI<Integer, PCCase> {
                 motherboard.setColor(Color.valueOf(resultSet.getString("color")));
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new DaoException(e);
         } finally {
             close(connection);
         }
@@ -91,7 +91,7 @@ public class PCCaseDao implements ComponentDaoI<Integer, PCCase> {
             statement.setString(5, pcCase.getColor().toString());
             statement.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new DaoException(e);
         } finally {
             close(connection);
         }
@@ -113,7 +113,7 @@ public class PCCaseDao implements ComponentDaoI<Integer, PCCase> {
             statement.setString(5, pcCase.getColor().toString());
             rowsUpdate = statement.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new DaoException(e);
         } finally {
             close(connection);
         }
@@ -132,7 +132,7 @@ public class PCCaseDao implements ComponentDaoI<Integer, PCCase> {
             statement.setInt(1, id);
             rowsUpdate = statement.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new DaoException(e);
         } finally {
             close(connection);
         }
@@ -155,7 +155,7 @@ public class PCCaseDao implements ComponentDaoI<Integer, PCCase> {
             statement.setString(5, pcCase.getColor().toString());
             rowsUpdate = statement.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new DaoException(e);
         } finally {
             close(connection);
         }

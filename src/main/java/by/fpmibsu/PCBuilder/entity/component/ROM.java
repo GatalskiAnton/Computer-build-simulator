@@ -23,7 +23,7 @@ public class ROM extends Component{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ROM rom = (ROM) o;
-        return capacity == rom.capacity;
+        return super.getId() == getId() && Objects.equals(super.getName(), getName()) && Objects.equals(super.getBrand(), getBrand()) && super.getPrice() == getPrice()  && capacity == rom.capacity;
     }
 
     public ROM() {
